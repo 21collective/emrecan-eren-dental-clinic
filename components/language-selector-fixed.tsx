@@ -4,9 +4,17 @@ import { Languages } from "lucide-react"
 import { useState, useEffect } from "react"
 
 export function LanguageSelectorFixed() {
-  const [currentLang, setCurrentLang] = useState<'tr'>('tr')
+  const [currentLang, setCurrentLang] = useState<'tr' | 'en'>('tr')
   const [showOptions, setShowOptions] = useState(false)
   const [isGoogleTranslateLoaded, setIsGoogleTranslateLoaded] = useState(false)
+
+  useEffect(() => {
+    if (/googtrans=\/[a-z-]+\/en/.test(document.cookie)) {
+      setCurrentLang('en')
+      loadGoogleTranslate()
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   // Load Google Translate ONLY when needed
   const loadGoogleTranslate = () => {
@@ -65,6 +73,27 @@ export function LanguageSelectorFixed() {
 
     translateSelect.value = 'en'
     translateSelect.dispatchEvent(new Event('change', { bubbles: true }))
+    setCurrentLang('en')
+  }
+
+  // Google Translate keeps the chosen language in the "googtrans" cookie and
+  // re-applies it on every page load, so the cookie must be cleared (on every
+  // domain variant it may have been set on) and the page reloaded.
+  const resetToTurkish = (e: React.MouseEvent) => {
+    e.preventDefault()
+    e.stopPropagation()
+    setShowOptions(false)
+
+    const expires = 'expires=Thu, 01 Jan 1970 00:00:00 GMT'
+    const host = window.location.hostname
+    const parts = host.split('.')
+    const domains = ['', host, `.${host}`]
+    if (parts.length > 2) domains.push(`.${parts.slice(-2).join('.')}`)
+    domains.forEach((domain) => {
+      document.cookie = `googtrans=; ${expires}; path=/${domain ? `; domain=${domain}` : ''}`
+    })
+
+    window.location.reload()
   }
 
   const toggleOptions = (e: React.MouseEvent) => {
@@ -124,15 +153,12 @@ export function LanguageSelectorFixed() {
             duration-200
           ">
             <button
-              onClick={(e) => {
-                e.preventDefault()
-                setShowOptions(false)
-              }}
-              className="
-                w-full px-4 py-3 flex items-center gap-3
-                text-left transition-colors
-                bg-vizon text-cream font-semibold
-              "
+              onClick={resetToTurkish}
+              className={`w-full px-4 py-3 flex items-center gap-3 text-left transition-colors ${
+                currentLang === 'tr'
+                  ? 'bg-vizon text-cream font-semibold'
+                  : 'text-cream/80 hover:bg-vizon/50 hover:text-cream'
+              }`}
             >
               <span className="text-2xl">🇹🇷</span>
               <span className="text-sm">Türkçe</span>
@@ -140,11 +166,11 @@ export function LanguageSelectorFixed() {
 
             <button
               onClick={(e) => changeLanguage('en', e)}
-              className="
-                w-full px-4 py-3 flex items-center gap-3
-                text-left transition-colors
-                text-cream/80 hover:bg-vizon/50 hover:text-cream
-              "
+              className={`w-full px-4 py-3 flex items-center gap-3 text-left transition-colors ${
+                currentLang === 'en'
+                  ? 'bg-vizon text-cream font-semibold'
+                  : 'text-cream/80 hover:bg-vizon/50 hover:text-cream'
+              }`}
             >
               <span className="text-2xl">🇬🇧</span>
               <span className="text-sm">English</span>

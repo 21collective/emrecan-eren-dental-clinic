@@ -12,6 +12,7 @@
     "db:migrate": "prisma migrate dev",
     "db:studio": "prisma studio",
     "create-admin": "tsx scripts/create-admin.ts",
+    "reset-admin-password": "tsx scripts/reset-admin-password.ts",
     "cleanup-team-images": "tsx scripts/cleanup-team-images.ts",
     "generate-blog-posts": "tsx scripts/generate-blog-posts.ts"
   },

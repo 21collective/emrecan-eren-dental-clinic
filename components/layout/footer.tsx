@@ -169,6 +169,15 @@ export function Footer() {
               21collective © 2025
             </a>
           </p>
+          <p className="mt-1 text-sm text-cream/60">
+            21collective - Mertcan Eren İletişim:{" "}
+            <a
+              href="tel:+905426898044"
+              className="text-cream/80 hover:text-cream transition-colors font-bold"
+            >
+              0 542 689 80 44
+            </a>
+          </p>
         </div>
       </div>
     </footer>
