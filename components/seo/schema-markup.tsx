@@ -16,7 +16,7 @@ export function SchemaMarkup({ type, data }: SchemaMarkupProps) {
           "alternateName": "Dt. Emrecan Eren",
           "url": "https://www.emrecaneren.com",
           "logo": "https://www.emrecaneren.com/images/ee_logo.png",
-          "description": "Lüleburgaz'ın ilk ve tek mikroskop destekli diş kliniği. Minimal invaziv, kanıta dayalı diş hekimliği.",
+          "description": "Lüleburgaz'da mikroskop destekli, kanıta dayalı diş hekimliği uygulayan ağız ve diş sağlığı polikliniği.",
           "address": {
             "@type": "PostalAddress",
             "streetAddress": "8 Kasım Mahallesi, Hazal Sokak, No:44/A",
@@ -34,6 +34,8 @@ export function SchemaMarkup({ type, data }: SchemaMarkupProps) {
           },
           "sameAs": [
             "https://www.instagram.com/dtemrecaneren",
+            "https://maps.google.com/?cid=17744340931578869053",
+            "https://www.google.com/search?kgmid=/g/11ght2r62p",
             "https://www.youtube.com/@lifeindentistry"
           ]
         }
@@ -42,9 +44,11 @@ export function SchemaMarkup({ type, data }: SchemaMarkupProps) {
         return {
           "@context": "https://schema.org",
           "@type": "Dentist",
+          "@id": "https://www.emrecaneren.com/#clinic",
           "name": "Dt. Emrecan Eren Ağız ve Diş Sağlığı Polikliniği",
+          "founder": { "@id": "https://www.emrecaneren.com/hakkinda#dr-eren" },
+          "sameAs": ["https://www.instagram.com/dtemrecaneren", "https://www.youtube.com/@lifeindentistry"],
           "image": "https://www.emrecaneren.com/images/ee_logo.png",
-          "priceRange": "$$",
           "address": {
             "@type": "PostalAddress",
             "streetAddress": "8 Kasım Mahallesi, Hazal Sokak, No:44/A",
@@ -105,11 +109,8 @@ export function SchemaMarkup({ type, data }: SchemaMarkupProps) {
               "closes": "17:00"
             }
           ],
-          "aggregateRating": {
-            "@type": "AggregateRating",
-            "ratingValue": "4.9",
-            "reviewCount": "127"
-          }
+          "areaServed": ["Lüleburgaz", "Büyükkarıştıran", "Evrensekiz", "Babaeski", "Pınarhisar", "Vize", "Muratlı", "Hayrabolu"].map((n) => ({ "@type": "City", "name": n })),
+          "hasMap": "https://maps.google.com/?cid=17744340931578869053"
         }
 
       case 'article':
@@ -118,22 +119,27 @@ export function SchemaMarkup({ type, data }: SchemaMarkupProps) {
           "@type": "MedicalWebPage",
           "headline": data?.title,
           "description": data?.description,
+          "inLanguage": "tr-TR",
+          "url": data?.url,
           "author": {
             "@type": "Person",
+            "@id": "https://www.emrecaneren.com/hakkinda#dr-eren",
             "name": "Dt. Emrecan Eren",
             "jobTitle": "Diş Hekimi",
             "url": "https://www.emrecaneren.com/hakkinda"
           },
           "publisher": {
-            "@type": "Organization",
-            "name": "Dt. Emrecan Eren Polikliniği",
+            "@type": "Dentist",
+            "@id": "https://www.emrecaneren.com/#clinic",
+            "name": "Dt. Emrecan Eren Ağız ve Diş Sağlığı Polikliniği",
             "logo": {
               "@type": "ImageObject",
               "url": "https://www.emrecaneren.com/images/ee_logo.png"
             }
           },
-          "datePublished": data?.datePublished || new Date().toISOString(),
-          "dateModified": data?.dateModified || new Date().toISOString(),
+          "datePublished": data?.datePublished,
+          "dateModified": data?.dateModified,
+          "lastReviewed": data?.dateModified,
           "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": data?.url
@@ -144,6 +150,7 @@ export function SchemaMarkup({ type, data }: SchemaMarkupProps) {
           },
           "reviewedBy": {
             "@type": "Person",
+            "@id": "https://www.emrecaneren.com/hakkinda#dr-eren",
             "name": "Dt. Emrecan Eren"
           }
         }

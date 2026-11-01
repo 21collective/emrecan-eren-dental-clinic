@@ -1,0 +1,315 @@
+/* Site additions around the generated scene chrome (maket.css): poster, about sheet, cards and page overrides. */
+.mk-chrome { display: contents; }
+
+.mk-poster { position: fixed; inset: 0; z-index: 1; pointer-events: none; transition: opacity 0.9s ease; }
+.mk-poster img { width: 100%; height: 100%; max-width: none; object-fit: cover; display: block; }
+html.mk-ready .mk-poster { opacity: 0; }
+#c { opacity: 0; transition: opacity 0.9s ease; }
+html.mk-ready #c { opacity: 1; }
+
+.tbtn-menu { background: var(--ink); color: var(--wash); border-color: var(--ink); }
+body.night .tbtn-menu { background: #ffc777; color: #1C241E; border-color: #ffc777; }
+
+.aboutBtn {
+  font: inherit;
+  margin-top: 6px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  letter-spacing: inherit;
+  text-transform: inherit;
+}
+
+/* about sheet */
+.ab {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  background: rgba(246, 243, 238, 0.94);
+  color: #1C241E;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.35s ease, visibility 0s linear 0.35s;
+  outline: none;
+}
+html.about-open .ab, html.mk-fallback .ab { opacity: 1; visibility: visible; transition: opacity 0.35s ease; }
+html.mk-fallback .ab-close { display: none; }
+.ab-inner {
+  max-width: 880px;
+  margin: 0 auto;
+  padding-block: calc(72px + env(safe-area-inset-top, 0px)) calc(56px + env(safe-area-inset-bottom, 0px));
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  position: relative;
+}
+.ab-close {
+  position: fixed;
+  top: calc(14px + env(safe-area-inset-top, 0px));
+  right: max(16px, env(safe-area-inset-right, 0px));
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid rgba(28, 36, 30, 0.25);
+  background: #F6F3EE;
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+  color: inherit;
+}
+.ab-eb { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: #A94B26; margin-bottom: 12px; }
+.ab h2 {
+  font-family: var(--disp);
+  font-size: clamp(34px, 6vw, 64px);
+  line-height: 0.98;
+  letter-spacing: -0.035em;
+  font-weight: 600;
+  text-wrap: balance;
+  margin-bottom: 20px;
+}
+.ab h3 {
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #A94B26;
+  margin: 40px 0 12px;
+  font-weight: 600;
+}
+.ab-lead { font-family: var(--disp); font-size: clamp(18px, 2.2vw, 22px); line-height: 1.5; max-width: 62ch; }
+.ab-list { list-style: none; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 250px), 1fr)); gap: 0 28px; }
+.ab-list li { border-bottom: 1px solid rgba(28, 36, 30, 0.1); }
+.ab-list a, .ab-rooms li { display: flex; flex-direction: column; gap: 2px; padding: 10px 0; text-decoration: none; color: inherit; }
+.ab-list b { font-family: var(--disp); font-size: 19px; font-weight: 600; letter-spacing: -0.01em; }
+.ab-list span { font-size: 12px; line-height: 1.5; opacity: 0.8; }
+.ab-list a:hover b { color: #A94B26; font-style: italic; }
+.ab-cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: 0 40px; }
+.ab address { font-style: normal; font-family: var(--disp); font-size: 19px; line-height: 1.45; }
+.ab-sel { user-select: all; -webkit-user-select: all; font-family: var(--mono); font-size: 16px; font-weight: 600; }
+.ab-links { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; margin-top: 14px; font-size: 12px; }
+.ab-btn { display: inline-flex; text-decoration: none; background: #1C241E; color: #F6F3EE !important; border-radius: 999px; padding: 9px 15px; }
+.ab-hours { list-style: none; font-size: 12px; max-width: 320px; }
+.ab-hours li { display: flex; justify-content: space-between; padding: 5px 0; border-bottom: 1px dashed rgba(28, 36, 30, 0.16); }
+.ab-more { margin-top: 44px; font-size: 12px; letter-spacing: 0.04em; }
+.ab a:focus-visible, .ab button:focus-visible { outline: 2px solid #A94B26; outline-offset: 3px; }
+
+@media (prefers-reduced-motion: reduce) {
+  .ab, .mk-poster, #c { transition: none; }
+}
+
+/* while the menu or the about sheet is up, only the model stays behind it */
+html.menu-open .mk-chrome > :not(#sky):not(#skyN):not(#c),
+html.about-open .mk-chrome > :not(#sky):not(#skyN):not(#c) { opacity: 0 !important; pointer-events: none !important; transition: opacity 0.25s; }
+html.about-open .ab { background: rgba(246, 243, 238, 0.96); }
+
+/* cards: photo on top, soft corners (matches the artifact v25) */
+.mk-root #editBtn,.mk-root #ed,.mk-root .edtip{display:none!important}
+#panel{padding:8px 8px 14px;border-radius:26px;background:rgba(246,243,238,.97);box-shadow:0 30px 70px -24px rgba(28,36,30,.55),0 0 0 1px rgba(28,36,30,.07)}
+@media (min-width:641px){#panel{width:min(360px,calc(100vw - 32px))}}
+#pbody{display:flex;flex-direction:column;align-items:stretch}
+#pbody>*{margin-left:12px;margin-right:12px}
+#pbody>.thumb{order:-1;margin:0 0 14px;width:100%;height:auto;aspect-ratio:4/3;border-radius:19px;object-fit:cover;background:#E4E0D6}
+#pbody>.eb{margin-top:6px}
+#pbody>.btn{align-self:flex-start}
+#pbody>.hrs{margin-top:10px}
+#pbody .st{align-self:flex-start}
+#pclose{z-index:2;background:rgba(246,243,238,.92);border-color:rgba(28,36,30,.12);right:16px;top:16px;box-shadow:0 4px 14px -6px rgba(28,36,30,.4)}
+#pbody>.who{display:block;margin:0}
+.who .ph{width:100%;height:auto;aspect-ratio:4/3;border-radius:19px;margin-bottom:14px;background:#E4E0D6}
+.who .ph img{object-position:50% 18%}
+.who>div:last-child{padding:0 12px}
+.who+p{margin-top:4px!important}
+#panel h3{margin-right:0}
+#pbody>.eb:first-child+h3{margin-right:34px}
+
+.ab-upd { margin-top: 10px; font-size: 11px; opacity: 0.6; }
+.ab-faq { display: grid; gap: 14px; margin: 0 0 10px; }
+.ab-faq dt { font-weight: 600; }
+.ab-faq dd { margin: 4px 0 0; opacity: 0.8; }
+
+/* ---------- inner pages (site) ---------- */
+/* Parkinsans has no italic: keep emphasis upright instead of a faked slant */
+.mk-root { font-synthesis: none; }
+/* width toggle was a design-review tool in the artifact */
+#pgWidth { display: none !important; }
+
+/* article bodies use h2/h3 for structure; size them like the artifact's h3/h4 */
+.pg .dt-art h2 { font-family: var(--disp); font-weight: 500; font-size: clamp(30px, 3cqi, 46px); line-height: 1.02; letter-spacing: -.035em; margin-top: 34px; display: grid; gap: 10px; text-wrap: balance; }
+.pg .dt-art h2 small { font-family: var(--mono); font-size: 10px; letter-spacing: .14em; color: var(--pg-hot); font-weight: 400; }
+.pg .dt-art h3 { font-family: var(--disp); font-weight: 600; font-size: 21px; line-height: 1.25; letter-spacing: -.01em; margin-top: 8px; display: block; }
+.dt-art a { color: var(--pg-hot); text-underline-offset: 3px; }
+.dt-art ol { display: grid; gap: 8px; padding-left: 22px; }
+.dt-tbl { overflow-x: auto; border: 1px solid var(--pg-line); border-radius: 18px; background: var(--pg-card); }
+.dt-tbl table { width: 100%; border-collapse: collapse; font-size: 14.5px; line-height: 1.45; }
+.dt-tbl th, .dt-tbl td { text-align: left; vertical-align: top; padding: 12px 16px; border-bottom: 1px solid var(--pg-line); }
+.dt-tbl tr:last-child td { border-bottom: 0; }
+.dt-tbl th { font-size: 10px; letter-spacing: .12em; text-transform: uppercase; color: var(--pg-hot); font-weight: 600; }
+.dt-toc[data-auto] ol { list-style: none; }
+.pg-upd { width: 100%; font-size: 10px; letter-spacing: .06em; color: var(--pg-muted); }
+.pg-crumb { display: flex; flex-wrap: wrap; gap: 8px; font-size: 10px; letter-spacing: .12em; text-transform: uppercase; color: var(--pg-muted); }
+.pg-crumb a { text-decoration: none; color: var(--pg-acc); }
+
+/* contact form, in the page's card language */
+.cf { padding: 28px; display: grid; gap: 18px; }
+.cf-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); gap: 14px; }
+.cf label { display: grid; gap: 8px; font-size: 10px; letter-spacing: .12em; text-transform: uppercase; color: var(--pg-hot); }
+.cf input[type="text"], .cf input[type="tel"], .cf textarea {
+  font: inherit; font-family: var(--disp); font-size: 17px; letter-spacing: 0; text-transform: none; color: var(--fg);
+  background: transparent; border: 1px solid var(--pg-line); border-radius: 16px; padding: 13px 16px; width: 100%;
+}
+.cf textarea { resize: vertical; min-height: 120px; }
+.cf input:focus-visible, .cf textarea:focus-visible { outline: 2px solid var(--pg-hot); outline-offset: 1px; }
+.cf .cf-ok { display: flex; gap: 12px; align-items: flex-start; font-size: 13px; letter-spacing: 0; text-transform: none; color: var(--fg); }
+.cf .cf-ok input { margin-top: 3px; accent-color: var(--pg-hot); width: 16px; height: 16px; flex: none; }
+.cf .cf-trap { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+.cf-msg { font-size: 14px; }
+.cf-msg.err { color: var(--pg-hot); }
+.cf .pbtn[disabled] { opacity: .6; cursor: progress; }
+
+/* page headings are h1 and section headings h2 on the site (h2/h3 in the artifact) */
+.pg h2:not([class]) { font-family: var(--disp); font-weight: 600; font-size: clamp(24px, 2.6cqi, 34px); line-height: 1.1; letter-spacing: -.025em; text-wrap: balance; }
+.pg .tm h2 { font-size: 22px; }
+@media (max-width: 640px) { .pg .tm h2 { font-size: 18px; } }
+.pg .job h2 { font-family: var(--disp); font-weight: 500; font-size: clamp(30px, 3cqi, 44px); line-height: 1; letter-spacing: -.035em; }
+.pg .dt-svc-g h3 { font-family: var(--disp); font-weight: 500; font-size: 24px; line-height: 1.1; letter-spacing: -.02em; }
+.pg h2.pg-lbl { font-family: var(--mono); font-weight: 400; }
+
+/* ---------- readability and solid shapes (client feedback 2026-10-31) ---------- */
+/* light theme: a denser veil so page text reads cleanly over the model */
+:root { --pg-solid: rgba(246,243,238,.94); --pg-card: rgba(250,248,244,.92); --pg-soft: rgba(28,36,30,.07); }
+body.night { --pg-soft: rgba(246,243,238,.12); }
+
+/* no hollow, outline-only shapes: numbers are filled, secondary buttons and chips get a soft fill */
+#pages .pg .flow-l b, #pages .pg .flow-l li.in b { color: var(--pg-acc); -webkit-text-stroke: 0; font-weight: 500; }
+.pg .pbtn.ghost, .pg .tm button, .pg .gl-chips button:not([aria-pressed="true"]) { background: var(--pg-soft); border-color: transparent; }
+.pg .pbtn.ghost:hover, .pg .tm button:hover, .pg .gl-chips button:not([aria-pressed="true"]):hover { background: var(--pg-line); }
+.cf input[type="text"], .cf input[type="tel"], .cf textarea { background: var(--pg-soft); border-color: transparent; }
+
+/* TR/EN: notes that only exist in English stay out of the layout in Turkish */
+.dt-note:empty { display: none; }
+/* top-right controls: off the screen edge, level with the logo */
+#nav .nv-ctl { margin-top: 20px; }
+@media (max-width: 640px) { #nav .nv-ctl { margin-top: 12px; } }
+
+/* ---------- scene layout (F): every page section is a full-screen scene in its own tone ---------- */
+/* components/maket/scenes.tsx marks the scenes (.sc + data-tone) and draws the chapter rail */
+#pages { container-type: inline-size; scroll-snap-type: y proximity; scroll-behavior: smooth; }
+#pages .pg { max-width: none; padding: 0; gap: 0; display: block; }
+#pages .pg > * { margin-block: 0; }
+
+[data-tone] {
+  --fg: #1C241E; --pg-muted: rgba(28,36,30,.68); --pg-acc: #725649; --pg-hot: #A94B26;
+  --pg-line: rgba(28,36,30,.14); --pg-soft: rgba(28,36,30,.07); --pg-card: rgba(28,36,30,.05);
+  --tone-bg: #F6F3EE;
+  color: var(--fg);
+}
+[data-tone="sand"] { --tone-bg: #E8E2D8; }
+[data-tone="dark"], [data-tone="acc"] {
+  --fg: #F6F3EE; --pg-muted: rgba(246,243,238,.72); --pg-acc: #ffc777; --pg-hot: #ffc777;
+  --pg-line: rgba(246,243,238,.16); --pg-soft: rgba(246,243,238,.12); --pg-card: rgba(246,243,238,.08);
+  --tone-bg: #1C241E;
+}
+[data-tone="acc"] { --tone-bg: #725649; --pg-muted: rgba(246,243,238,.8); }
+body.night [data-tone="cream"], body.night [data-tone="sand"] {
+  --fg: #F6F3EE; --pg-muted: rgba(246,243,238,.72); --pg-acc: #ffc777; --pg-hot: #ffc777;
+  --pg-line: rgba(246,243,238,.14); --pg-soft: rgba(246,243,238,.1); --pg-card: rgba(246,243,238,.06);
+  --tone-bg: #161C2A;
+}
+body.night [data-tone="sand"] { --tone-bg: #1E2536; }
+body.night [data-tone="dark"] { --tone-bg: #0B0F1A; }
+
+/* tones paint edge to edge, even on centred (.bx-wrap) sections */
+#pages .pg > [data-tone] {
+  background: var(--tone-bg);
+  box-shadow: 0 0 0 100vmax var(--tone-bg);
+  clip-path: inset(0 -100vmax);
+  transition: background .5s, box-shadow .5s, color .5s;
+}
+#pages .pg > .sc {
+  min-height: 100vh; box-sizing: border-box;
+  padding-block: calc(120px + env(safe-area-inset-top,0px)) 120px;
+  scroll-snap-align: start;
+}
+#pages .pg > [data-tone]:not(.bx-wrap):not(.walk):not(.bx-marq):not(.flow) {
+  padding-left: max(24px, 5cqi, env(safe-area-inset-left,0px));
+  padding-right: max(24px, 5cqi, env(safe-area-inset-right,0px));
+}
+#pages .pg > .sc-hero { position: relative; display: grid; align-content: end; gap: 22px; overflow: hidden; }
+/* the scene number: a big filled numeral at the hero's corner */
+#pages .pg > .sc-hero[data-n]::after {
+  content: attr(data-n); position: absolute; right: max(24px, 5cqi); top: calc(96px + env(safe-area-inset-top,0px));
+  font-family: var(--disp); font-weight: 700; font-size: clamp(120px, 22cqi, 300px); line-height: .78; letter-spacing: -.06em;
+  color: var(--pg-hot); pointer-events: none;
+}
+#pages .walk.sc { padding-block: 0; }
+#pages .bx-ftw .pg-ft { padding-block: 0; }
+
+/* chapter rail, progress and arrows */
+.scr { position: fixed; z-index: 6; right: max(18px, env(safe-area-inset-right,0px)); top: 50%; translate: 0 -50%;
+  display: flex; flex-direction: column; gap: 6px; }
+.scr button, .scn button { border: 0; cursor: pointer; font: inherit; color: var(--fg); background: var(--pg-soft); transition: background .4s, color .4s; }
+.scr button { display: flex; align-items: center; gap: 10px; padding: 10px 14px; border-radius: 999px; font-size: 13px; text-align: left; max-width: 230px; }
+.scr button b { font-weight: 700; }
+.scr button span { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.scr button[aria-current="step"] { background: var(--fg); color: var(--tone-bg); }
+.scn { position: fixed; z-index: 6; left: max(18px, env(safe-area-inset-left,0px)); bottom: calc(46px + env(safe-area-inset-bottom,0px));
+  display: flex; align-items: center; gap: 8px; }
+.scn button { width: 52px; height: 52px; border-radius: 50%; font-size: 20px; }
+.scn button.nx { background: var(--pg-hot); color: #1C241E; }
+.scn .bar { width: 160px; height: 6px; border-radius: 999px; background: var(--pg-soft); overflow: hidden; }
+.scn .bar i { display: block; height: 100%; background: var(--pg-hot); border-radius: 999px; transition: width .5s; }
+@media (max-width: 1100px) { .scr { display: none; } }
+@media (max-width: 640px) { .scn .bar { display: none; } .scn { bottom: calc(110px + env(safe-area-inset-bottom,0px)); } #pages .pg > .sc-hero[data-n]::after { display: none; } }
+/* the hero's big numeral replaces the small eyebrow number */
+@media (min-width: 641px) { #pages .pg > .sc-hero[data-n] .dt-eb b { display: none; } }
+/* scene content sits in the middle of the screen instead of stretching to fill it */
+#pages .pg > .sc:not(.sc-hero) { align-content: center; }
+#pages .pg > .sc:not(.sc-hero):not(.walk) > .pg-lbl:first-child,
+#pages .pg > .sc:not(.sc-hero) > h2.pg-lbl:first-child { font-size: 15px; margin-bottom: 18px; }
+
+/* ---------- scene spacing: nothing touches a tone edge, the screen edge or the fixed controls ---------- */
+#pages .pg > .sc { padding-block: calc(128px + env(safe-area-inset-top,0px)) 152px; }
+#pages .pg > [data-tone]:not(.sc) { padding-block: 20px; }
+#pages .pg > [data-tone].sc-top:not(.sc) { padding-top: 112px; }
+#pages .pg > [data-tone].sc-end:not(.sc) { padding-bottom: 112px; }
+#pages .pg > .sc + [data-tone]:not(.sc):not(.sc-top) { padding-top: 0; }
+#pages .pg > .pg-ft[data-tone], #pages .pg > .bx-ftw[data-tone] { padding-block: 56px 168px; }
+
+/* rail: clear of the page scrollbar and the corner controls */
+.scr { right: calc(max(28px, env(safe-area-inset-right,0px)) + 12px); max-height: calc(100vh - 260px); overflow-y: auto; scrollbar-width: none; padding: 4px; }
+/* arrows + progress on a chip of the current tone, so they read over any content */
+.scn { left: max(24px, env(safe-area-inset-left,0px)); bottom: calc(40px + env(safe-area-inset-bottom,0px));
+  padding: 6px 16px 6px 6px; border-radius: 999px; background: var(--tone-bg); box-shadow: 0 10px 30px rgba(28,36,30,.22); }
+.scn button { width: 46px; height: 46px; font-size: 18px; }
+.scn .bar { width: 120px; }
+
+@media (max-width: 1100px) {
+  #pages .pg > .sc-hero[data-n]::after { font-size: clamp(96px, 26cqi, 200px); }
+}
+@media (max-width: 640px) {
+  #pages .pg > .sc { min-height: 0; padding-block: calc(104px + env(safe-area-inset-top,0px)) 88px; scroll-snap-align: none; }
+  #pages .pg > .sc-hero { min-height: 100svh; padding-bottom: 150px; }
+  #pages .pg > [data-tone].sc-top:not(.sc) { padding-top: 72px; }
+  #pages .pg > [data-tone].sc-end:not(.sc) { padding-bottom: 72px; }
+  #pages .pg > .pg-ft[data-tone], #pages .pg > .bx-ftw[data-tone] { padding-block: 40px 200px; }
+  #pages { scroll-snap-type: none; }
+  /* on phones the thumb scrolls; arrows would only sit on top of the text */
+  .scn { display: none; }
+}
+
+/* the tilted marquee keeps its own colour band; a full-bleed tone behind a rotated box shears the page edge */
+#pages .pg > .bx-marq.bx-marq[data-tone]:not(.sc) {
+  background: #A94B26; color: #F6F3EE; box-shadow: none; clip-path: none;
+  padding-block: 20px; margin-block: 0; position: relative; z-index: 1;
+}
+body.night #pages .pg > .bx-marq.bx-marq[data-tone]:not(.sc) { background: #ffc777; color: #1C241E; }
+
+/* careers: heading + positions, and values + note, each read as one scene */
+#pages .jobs-sc, #pages .vals-sc { display: grid; gap: 28px; }
+#pages .vals-sc .dt-note { margin: 0; }
+/* three short cards do not fill a screen: this scene sizes to its content */
+#pages .pg > .vals-sc.sc { min-height: 0; }

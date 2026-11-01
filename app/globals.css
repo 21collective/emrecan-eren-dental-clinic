@@ -2,210 +2,33 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Font smoothing for better rendering */
+/* Parkinsans (Google Fonts, OFL), self-hosted */
+@font-face {
+  font-family: "Parkinsans";
+  font-style: normal;
+  font-weight: 300 800;
+  font-display: swap;
+  src: url("/fonts/parkinsans-latin-ext.woff2") format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: "Parkinsans";
+  font-style: normal;
+  font-weight: 300 800;
+  font-display: swap;
+  src: url("/fonts/parkinsans-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+:root {
+  --font-sans: "Parkinsans";
+}
+
+
 @layer base {
   body {
-    @apply antialiased;
-    font-family: var(--font-nexa), system-ui, sans-serif;
-    font-size: 17px;
-    line-height: 1.7;
+    font-family: var(--font-sans), system-ui, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    text-rendering: optimizeLegibility;
   }
-  
-  h1, h2, h3, h4, h5, h6 {
-    font-family: var(--font-nexa), sans-serif;
-    line-height: 1.3;
-  }
-  
-  h1 {
-    font-size: 2.75rem;
-  }
-  
-  h2 {
-    font-size: 2rem;
-  }
-  
-  h3 {
-    font-size: 1.5rem;
-  }
-  
-  p {
-    font-size: 1.0625rem;
-    line-height: 1.75;
-  }
-}
-
-@layer base {
-  :root {
-    --background: 36 25% 91%; /* #f0ece1 cream */
-    --foreground: 20 20% 35%; /* #725649 brown */
-
-    --card: 36 25% 91%;
-    --card-foreground: 20 20% 35%;
-
-    --popover: 36 25% 91%;
-    --popover-foreground: 20 20% 35%;
-
-    --primary: 25 22% 44%; /* #886e57 vizon */
-    --primary-foreground: 36 25% 91%;
-
-    --secondary: 60 3% 71%; /* #b6b7b1 grey */
-    --secondary-foreground: 20 20% 35%;
-
-    --muted: 60 3% 71%;
-    --muted-foreground: 20 20% 45%;
-
-    --accent: 25 22% 44%;
-    --accent-foreground: 36 25% 91%;
-
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 36 25% 91%;
-
-    --border: 60 3% 71%;
-    --input: 60 3% 71%;
-    --ring: 25 22% 44%;
-
-    --radius: 0.5rem;
-  }
-}
-
-@layer base {
-  * {
-    @apply border-border;
-  }
-  body {
-    @apply bg-cream text-brown;
-    font-feature-settings: "rlig" 1, "calt" 1;
-  }
-}
-
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
-}
-
-/* Custom Scrollbar */
-::-webkit-scrollbar {
-  width: 10px;
-}
-
-::-webkit-scrollbar-track {
-  background: #f0ece1;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #886e57;
-  border-radius: 5px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #725649;
-}
-
-/* Smooth Scroll */
-html {
-  scroll-behavior: smooth;
-}
-
-/* Google Translate Widget Styling */
-.google-translate-container {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-}
-
-/* Hide Google branding and gadget */
-.google-translate-container .goog-logo-link,
-.google-translate-container .goog-te-gadget-icon,
-.google-translate-container > div,
-.google-translate-container span {
-  display: none !important;
-}
-
-/* Style the select dropdown - Floating Button Style */
-.google-translate-container .goog-te-combo,
-#google_translate_element .goog-te-combo {
-  background: linear-gradient(135deg, #886e57 0%, #725649 100%) !important;
-  border: none !important;
-  color: #f0ece1 !important;
-  padding: 12px 36px 12px 16px !important;
-  border-radius: 9999px !important;
-  font-size: 14px !important;
-  font-weight: 600 !important;
-  cursor: pointer !important;
-  outline: none !important;
-  appearance: none !important;
-  -webkit-appearance: none !important;
-  -moz-appearance: none !important;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23f0ece1' d='M6 9L1 4h10z'/%3E%3C/svg%3E") !important;
-  background-repeat: no-repeat !important;
-  background-position: right 12px center !important;
-  min-width: 140px !important;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06) !important;
-  transition: all 0.3s ease !important;
-  text-align: left !important;
-}
-
-.google-translate-container .goog-te-combo:hover,
-#google_translate_element .goog-te-combo:hover {
-  background: linear-gradient(135deg, #725649 0%, #5a4539 100%) !important;
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05) !important;
-  transform: scale(1.05) !important;
-}
-
-.google-translate-container .goog-te-combo:focus,
-#google_translate_element .goog-te-combo:focus {
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05), 0 0 0 3px rgba(240, 236, 225, 0.3) !important;
-}
-
-/* Style dropdown options */
-.google-translate-container .goog-te-combo option,
-#google_translate_element .goog-te-combo option {
-  background-color: #725649 !important;
-  color: #f0ece1 !important;
-  padding: 8px !important;
-}
-
-/* Hide Google Translate banner and branding */
-.goog-te-banner-frame,
-.goog-te-balloon-frame,
-#goog-gt-tt,
-.goog-te-banner-frame.skiptranslate,
-.goog-te-gadget-simple {
-  display: none !important;
-}
-
-body {
-  top: 0 !important;
-}
-
-.skiptranslate iframe {
-  visibility: hidden !important;
-  display: none !important;
-}
-
-/* Fix for widget container */
-#google_translate_element {
-  display: inline-block !important;
-}
-
-#google_translate_element .skiptranslate {
-  display: inline-block !important;
-}
-
-#google_translate_element .goog-te-gadget {
-  color: transparent !important;
-  font-size: 0 !important;
-  line-height: 0 !important;
-}
-
-#google_translate_element .goog-te-gadget-simple {
-  background-color: transparent !important;
-  border: none !important;
-  padding: 0 !important;
-  display: inline-flex !important;
-  align-items: center !important;
 }

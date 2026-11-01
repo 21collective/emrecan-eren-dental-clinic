@@ -80,6 +80,12 @@ const TEAM: {
     role: { tr: "Diş Hekimi", en: "Dentist", bg: "Дентален лекар" },
   },
   {
+    monogram: "RD",
+    handle: "trakyadishekimii",
+    name: { tr: "Dt. Rıdvan Doğan", en: "Dr. Rıdvan Doğan", bg: "Д-р Rıdvan Doğan" },
+    role: { tr: "Diş Hekimi", en: "Dentist", bg: "Дентален лекар" },
+  },
+  {
     monogram: "BK",
     handle: "trakyadiyetisyen",
     name: {

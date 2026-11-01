@@ -29,7 +29,6 @@ export const schemas = {
     "telephone": "+90 [Telefon]",
     "url": "https://www.emrecaneren.com",
     "openingHours": "Mo-Fr 09:00-18:00, Sa 09:00-14:00",
-    "priceRange": "$$",
     "member": {
       "@type": "Physician",
       "@id": "https://www.emrecaneren.com/hakkinda#dr-eren"
@@ -56,7 +55,6 @@ export const schemas = {
     "name": name,
     "description": description,
     "medicalSpecialty": "Dentistry",
-    "procedureType": "Surgical",
     "provider": {
       "@type": "Physician",
       "name": "Dt. Emrecan Eren",
