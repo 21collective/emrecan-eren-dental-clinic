@@ -33,7 +33,7 @@ export function SchemaMarkup({ type, data }: SchemaMarkupProps) {
             "areaServed": "TR"
           },
           "sameAs": [
-            "https://www.instagram.com/dtemrecaneren",
+            "https://www.instagram.com/emrecanerenadsp",
             "https://maps.google.com/?cid=17744340931578869053",
             "https://www.google.com/search?kgmid=/g/11ght2r62p",
             "https://www.youtube.com/@lifeindentistry"
@@ -47,7 +47,7 @@ export function SchemaMarkup({ type, data }: SchemaMarkupProps) {
           "@id": "https://www.emrecaneren.com/#clinic",
           "name": "Emrecan Eren Özel Ağız ve Diş Sağlığı Polikliniği",
           "founder": { "@id": "https://www.emrecaneren.com/hakkinda#dr-eren" },
-          "sameAs": ["https://www.instagram.com/dtemrecaneren", "https://www.youtube.com/@lifeindentistry"],
+          "sameAs": ["https://www.instagram.com/emrecanerenadsp", "https://www.youtube.com/@lifeindentistry"],
           "image": "https://www.emrecaneren.com/apple-icon.png",
           "address": {
             "@type": "PostalAddress",

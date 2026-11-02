@@ -1,7 +1,3 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 /* Parkinsans (Google Fonts, OFL), self-hosted */
 @font-face {
   font-family: "Parkinsans";
@@ -25,10 +21,8 @@
 }
 
 
-@layer base {
-  body {
-    font-family: var(--font-sans), system-ui, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
+body {
+  font-family: var(--font-sans), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }

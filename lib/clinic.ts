@@ -12,7 +12,7 @@ export const CLINIC = {
     encodeURIComponent("Merhaba, Hazal Sk.’deki kliniğiniz için randevu almak istiyorum."),
   maps: "https://www.google.com/maps/search/?api=1&query=" +
     encodeURIComponent("Emrecan Eren Ağız ve Diş Sağlığı Polikliniği, Hazal Sk. 44/A, Lüleburgaz"),
-  instagram: "https://www.instagram.com/dtemrecaneren",
+  instagram: "https://www.instagram.com/emrecanerenadsp",
   youtube: "https://www.youtube.com/@lifeindentistry",
   googleMaps: "https://maps.google.com/?cid=17744340931578869053",
 }
@@ -48,3 +48,6 @@ export const TREATMENTS: { name: string; href: string; blurb: string }[] = [
   { name: "Pedodonti", href: "/tedaviler/pedodonti-cocuk-dis-hekimligi", blurb: "Çocuklar için sakin bir ortamda diş hekimliği." },
   { name: "Bruksizm (Diş Sıkma)", href: "/tedaviler/dis-sikma-bruksizm-tedavisi", blurb: "Kişiye özel gece plağı." },
 ]
+
+// share image for every page; pages that set their own openGraph must repeat it (Next does not merge it in)
+export const OG_IMAGE = { url: "/maket/og.jpg", width: 1200, height: 630, alt: "Kliniğin bahçeli maket görünümü" }

@@ -1,6 +1,8 @@
 import type { Metadata, Viewport } from "next"
+import "./reset.css"
 import "./globals.css"
 import { josefin } from "./fonts"
+import { OG_IMAGE } from "@/lib/clinic"
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.emrecaneren.com"),
@@ -21,7 +23,7 @@ export const metadata: Metadata = {
     siteName: "Emrecan Eren Özel Ağız ve Diş Sağlığı Polikliniği",
     title: "Lüleburgaz Diş Hekimi | Dt. Emrecan Eren",
     description: "Lüleburgaz'ın mikroskop destekli diş kliniği. Bahçeden içeri buyurun.",
-    images: [{ url: "/maket/og.jpg", width: 1200, height: 630, alt: "Kliniğin bahçeli maket görünümü" }],
+    images: [OG_IMAGE],
   },
   twitter: { card: "summary_large_image", images: ["/maket/og.jpg"] },
 }

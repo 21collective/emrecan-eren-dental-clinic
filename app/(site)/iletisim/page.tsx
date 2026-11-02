@@ -56,7 +56,7 @@ export default function ContactPage() {
           </div>
           <div>
             <span className="pg-lbl">Instagram</span>
-            <a href={CLINIC.instagram} target="_blank" rel="noopener" style={{ fontFamily: "var(--disp)", fontSize: 20 }}>@dtemrecaneren ↗</a>
+            <a href={CLINIC.instagram} target="_blank" rel="noopener" style={{ fontFamily: "var(--disp)", fontSize: 20 }}>@emrecanerenadsp ↗</a>
           </div>
           <div>
             <span className="pg-lbl" data-en="Opening hours">Çalışma saatleri</span>

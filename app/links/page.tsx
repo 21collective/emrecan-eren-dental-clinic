@@ -18,7 +18,7 @@ export const metadata: Metadata = {
 }
 
 export const viewport: Viewport = {
-  themeColor: "#725649",
+  themeColor: "#1C241E",
 }
 
 export default async function LinksPage() {

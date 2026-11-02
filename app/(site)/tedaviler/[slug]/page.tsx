@@ -2,7 +2,7 @@ import type { Metadata } from "next"
 import { notFound } from "next/navigation"
 import { JsonLd, schemas } from "@/components/seo/json-ld"
 import { ArticleBody, BackHome, Faq, GuideCard, PageFooter, Toc, TrOnlyNote, tocOf } from "@/components/site/page-bits"
-import { CLINIC, HOURS } from "@/lib/clinic"
+import { CLINIC, HOURS, OG_IMAGE } from "@/lib/clinic"
 import { GD, TX, two, txBySlug, type Treatment } from "@/lib/content"
 import { LOCAL_SERVICES, NEARBY, getLocalService, type LocalService } from "@/lib/local-seo"
 
@@ -24,17 +24,17 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       description: t.meta.description,
       keywords: t.meta.keywords,
       alternates: { canonical: `/tedaviler/${t.slug}` },
-      openGraph: { title: t.meta.title, description: t.meta.description, url: `/tedaviler/${t.slug}` },
+      openGraph: { images: [OG_IMAGE], title: t.meta.title, description: t.meta.description, url: `/tedaviler/${t.slug}` },
     }
   }
   const s = getLocalService(slug)
-  if (!s) return {}
+  if (!s) return { title: "Sayfa bulunamadı", robots: { index: false } }
   return {
     title: { absolute: `${s.title} | Dt. Emrecan Eren` },
     description: s.description,
     keywords: s.keywords,
     alternates: { canonical: `/tedaviler/${s.slug}` },
-    openGraph: { title: s.title, description: s.description, url: `/tedaviler/${s.slug}` },
+    openGraph: { images: [OG_IMAGE], title: s.title, description: s.description, url: `/tedaviler/${s.slug}` },
   }
 }
 

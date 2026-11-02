@@ -3,7 +3,7 @@ import { notFound } from "next/navigation"
 import { JsonLd, schemas } from "@/components/seo/json-ld"
 import { SchemaMarkup } from "@/components/seo/schema-markup"
 import { ArticleBody, BackHome, Faq, GuideCard, PageFooter, Toc, TrOnlyNote, tocOf } from "@/components/site/page-bits"
-import { SITE_UPDATED } from "@/lib/clinic"
+import { OG_IMAGE, SITE_UPDATED } from "@/lib/clinic"
 import { GD, gdBySlug, readMin, txBySlug } from "@/lib/content"
 
 const SITE = "https://www.emrecaneren.com"
@@ -17,13 +17,13 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params
   const g = gdBySlug(slug)
-  if (!g) return {}
+  if (!g) return { title: "Sayfa bulunamadı", robots: { index: false } }
   return {
     title: g.meta.title || g.title,
     description: g.meta.description || g.lead,
     keywords: g.meta.keywords,
     alternates: { canonical: `/dis-sagligi-rehberi/${g.slug}` },
-    openGraph: { type: "article", title: g.meta.title || g.title, description: g.meta.description || g.lead, url: `/dis-sagligi-rehberi/${g.slug}` },
+    openGraph: { type: "article", images: [OG_IMAGE], title: g.meta.title || g.title, description: g.meta.description || g.lead, url: `/dis-sagligi-rehberi/${g.slug}` },
   }
 }
 
