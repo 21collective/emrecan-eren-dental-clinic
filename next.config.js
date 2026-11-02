@@ -41,6 +41,23 @@ const nextConfig = {
       },
     ]
   },
+  async redirects() {
+    return [
+      // one address for search engines: the bare domain goes to www
+      {
+        source: '/:path*',
+        has: [{ type: 'host', value: 'emrecaneren.com' }],
+        destination: 'https://www.emrecaneren.com/:path*',
+        permanent: true,
+      },
+      // the old site's botox article was removed (regulation); send its links to the bruxism treatment page
+      {
+        source: '/dis-sagligi-rehberi/masseter-cene-botoksu-dis-sikma',
+        destination: '/tedaviler/dis-sikma-bruksizm-tedavisi',
+        permanent: true,
+      },
+    ]
+  },
 }
 
 module.exports = nextConfig
