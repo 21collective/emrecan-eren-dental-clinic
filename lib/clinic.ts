@@ -2,7 +2,7 @@
 
 export const CLINIC = {
   name: "Dt. Emrecan Eren",
-  legalName: "Özel Emrecan Eren Ağız ve Diş Sağlığı Polikliniği",
+  legalName: "Emrecan Eren Özel Ağız ve Diş Sağlığı Polikliniği",
   street: "8 Kasım Mah. Hazal Sk. No:44/A",
   city: "Lüleburgaz / Kırklareli",
   phone: "+90 543 486 00 55",

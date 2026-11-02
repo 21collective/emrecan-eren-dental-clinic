@@ -31,7 +31,7 @@ export default function TeamPage() {
           <article className="tm card" key={m.at}>
             <img src={`/maket/img/${m.img}.webp`} alt={m.name} loading="lazy" />
             <small data-en={m.roleEn}>{m.role}</small>
-            <h2>{m.name}</h2>
+            <h2 data-en={m.name.replace(/^Dt\. /, "Dr. ")}>{m.name}</h2>
             <button type="button" data-act={`find:${m.at}`} data-en="Show on the model →">Makette göster →</button>
           </article>
         ))}

@@ -6,10 +6,15 @@ import { SITE_UPDATED, siteUpdatedTR } from "@/lib/clinic"
 import "./maket.css"
 import "./site.css"
 
-// the generated footers carry the editor credit; the regulation also wants the last-update date beside it
+// the generated footers carry the editor credit; the regulation also wants the last-update date beside it,
+// and the agency line is ours to set here so a regenerated markup.ts cannot bring the old one back
 const updatedEN = new Date(SITE_UPDATED + "T12:00:00").toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" })
+const TAGLINE = "Family business, different toolboxes. — 21collective"
 const withUpdated = (html: string) =>
-  html.split('<span class="ft-r">').join(`<span class="ft-r"><span data-en="Last updated: ${updatedEN}">Son güncelleme: ${siteUpdatedTR()}</span> · `)
+  html
+    .replace(/<span class="ft-l">[^<]*<\/span>/g, `<span class="ft-l">${TAGLINE}</span>`)
+    .split('<span class="ft-r">')
+    .join(`<span class="ft-r"><span data-en="Last updated: ${updatedEN}">Son güncelleme: ${siteUpdatedTR()}</span> · `)
 
 // Every page sits over one persistent garden model; inner pages open as a veil
 // above it and the camera flies to the page's place in the garden.

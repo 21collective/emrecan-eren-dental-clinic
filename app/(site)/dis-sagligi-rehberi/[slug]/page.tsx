@@ -48,7 +48,7 @@ export default function GuideArticle({ params }: { params: { slug: string } }) {
         <div className="dt-hero-ft">
           <p className="dt-lead">{g.lead}</p>
           <div className="gd-meta">
-            <span>Dt. Emrecan Eren</span>
+            <span data-en="Dr. Emrecan Eren">Dt. Emrecan Eren</span>
             <span data-en={`${readMin(g)} min read`}>{readMin(g)} dk okuma</span>
             <span>{g.cat}</span>
             <span data-en={`Updated <time datetime="${modified}">${fmtDate(modified, "en-GB")}</time>`}>Güncelleme: <time dateTime={modified}>{fmtDate(modified, "tr-TR")}</time></span>

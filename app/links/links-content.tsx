@@ -12,7 +12,7 @@ const MAPS_HREF = "https://maps.app.goo.gl/ZjYhRLkJtXxZwqXX7"
 const CLINIC_HANDLE = "emrecanerenadsp"
 
 // Kliniğin tescilli adı her dilde aynı kalır.
-const LEGAL_NAME = "Özel Emrecan Eren Ağız ve Diş Sağlığı Polikliniği"
+const LEGAL_NAME = "Emrecan Eren Özel Ağız ve Diş Sağlığı Polikliniği"
 const UPDATED_LABEL: Record<Lang, string> = { tr: "Son güncelleme", en: "Last updated", bg: "Последна актуализация" }
 const EDITOR_LABEL: Record<Lang, string> = { tr: "Site editörü", en: "Site editor", bg: "Редактор на сайта" }
 const DATE_LOCALE: Record<Lang, string> = { tr: "tr-TR", en: "en-GB", bg: "bg-BG" }
@@ -64,7 +64,7 @@ const TEAM: {
   {
     monogram: "EE",
     handle: "sadeceemmrecaan",
-    name: { tr: "Dt. Emrecan Eren", en: "Dt. Emrecan Eren", bg: "Dt. Emrecan Eren" },
+    name: { tr: "Dt. Emrecan Eren", en: "Dr. Emrecan Eren", bg: "Д-р Emrecan Eren" },
     role: {
       tr: "Kurucu Diş Hekimi",
       en: "Founding Dentist",
@@ -74,19 +74,19 @@ const TEAM: {
   {
     monogram: "BE",
     handle: "trakyadishekimi",
-    name: { tr: "Dt. Barkın Ergin", en: "Dt. Barkın Ergin", bg: "Dt. Barkın Ergin" },
+    name: { tr: "Dt. Barkın Ergin", en: "Dr. Barkın Ergin", bg: "Д-р Barkın Ergin" },
     role: { tr: "Diş Hekimi", en: "Dentist", bg: "Дентален лекар" },
   },
   {
     monogram: "MV",
     handle: "trakyadishekimi0",
-    name: { tr: "Dt. Mehmet Varyemez", en: "Dt. Mehmet Varyemez", bg: "Dt. Mehmet Varyemez" },
+    name: { tr: "Dt. Mehmet Varyemez", en: "Dr. Mehmet Varyemez", bg: "Д-р Mehmet Varyemez" },
     role: { tr: "Diş Hekimi", en: "Dentist", bg: "Дентален лекар" },
   },
   {
     monogram: "RD",
     handle: "trakyadishekimii",
-    name: { tr: "Dt. Rıdvan Doğan", en: "Dt. Rıdvan Doğan", bg: "Dt. Rıdvan Doğan" },
+    name: { tr: "Dt. Rıdvan Doğan", en: "Dr. Rıdvan Doğan", bg: "Д-р Rıdvan Doğan" },
     role: { tr: "Diş Hekimi", en: "Dentist", bg: "Дентален лекар" },
   },
   {

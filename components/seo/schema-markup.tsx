@@ -12,7 +12,7 @@ export function SchemaMarkup({ type, data }: SchemaMarkupProps) {
         return {
           "@context": "https://schema.org",
           "@type": "Organization",
-          "name": "Dt. Emrecan Eren Ağız ve Diş Sağlığı Polikliniği",
+          "name": "Emrecan Eren Özel Ağız ve Diş Sağlığı Polikliniği",
           "alternateName": "Dt. Emrecan Eren",
           "url": "https://www.emrecaneren.com",
           "logo": "https://www.emrecaneren.com/images/ee_logo.png",
@@ -45,7 +45,7 @@ export function SchemaMarkup({ type, data }: SchemaMarkupProps) {
           "@context": "https://schema.org",
           "@type": "Dentist",
           "@id": "https://www.emrecaneren.com/#clinic",
-          "name": "Dt. Emrecan Eren Ağız ve Diş Sağlığı Polikliniği",
+          "name": "Emrecan Eren Özel Ağız ve Diş Sağlığı Polikliniği",
           "founder": { "@id": "https://www.emrecaneren.com/hakkinda#dr-eren" },
           "sameAs": ["https://www.instagram.com/dtemrecaneren", "https://www.youtube.com/@lifeindentistry"],
           "image": "https://www.emrecaneren.com/images/ee_logo.png",
@@ -131,7 +131,7 @@ export function SchemaMarkup({ type, data }: SchemaMarkupProps) {
           "publisher": {
             "@type": "Dentist",
             "@id": "https://www.emrecaneren.com/#clinic",
-            "name": "Dt. Emrecan Eren Ağız ve Diş Sağlığı Polikliniği",
+            "name": "Emrecan Eren Özel Ağız ve Diş Sağlığı Polikliniği",
             "logo": {
               "@type": "ImageObject",
               "url": "https://www.emrecaneren.com/images/ee_logo.png"

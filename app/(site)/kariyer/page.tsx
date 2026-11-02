@@ -6,7 +6,7 @@ import { two } from "@/lib/content"
 export const metadata: Metadata = {
   title: "Kariyer",
   description:
-    "Lüleburgaz Dt. Emrecan Eren Ağız ve Diş Sağlığı Polikliniği'nde sosyal medya sorumlusu ve diş protez teknisyeni pozisyonları için başvuru.",
+    "Lüleburgaz Emrecan Eren Özel Ağız ve Diş Sağlığı Polikliniği'nde sosyal medya sorumlusu ve diş protez teknisyeni pozisyonları için başvuru.",
   alternates: { canonical: "/kariyer" },
 }
 

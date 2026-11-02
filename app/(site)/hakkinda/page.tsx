@@ -7,7 +7,7 @@ import { TX, two } from "@/lib/content"
 export const metadata: Metadata = {
   title: "Hakkımızda · Lüleburgaz Diş Kliniği",
   description:
-    "Dt. Emrecan Eren Polikliniği, Lüleburgaz: dört tedavi ünitesi, klinik içi dental tomografi ve hastayla paylaşılan tedavi planı.",
+    "Emrecan Eren Özel Ağız ve Diş Sağlığı Polikliniği, Lüleburgaz: dört tedavi ünitesi, klinik içi dental tomografi ve hastayla paylaşılan tedavi planı.",
   keywords: ["Dt. Emrecan Eren", "Lüleburgaz poliklinik", "Lüleburgaz diş kliniği", "dental tomografi", "klinik içi üretim"],
   alternates: { canonical: "/hakkinda" },
 }
@@ -53,9 +53,9 @@ export default function AboutPage() {
         <div className="bx-hero-ft">
           <p
             className="pg-lead"
-            data-en="Emrecan Eren Oral and Dental Health Polyclinic serves Lüleburgaz with four treatment units and in-house dental CT. Every treatment rests on an examination, the imaging it needs and a plan shared with the patient."
+            data-en="Emrecan Eren Private Oral and Dental Health Polyclinic serves Lüleburgaz with four treatment units and in-house dental CT. Every treatment rests on an examination, the imaging it needs and a plan shared with the patient."
           >
-            Özel Emrecan Eren Ağız ve Diş Sağlığı Polikliniği, Lüleburgaz’da dört tedavi ünitesi ve klinik içi dental
+            Emrecan Eren Özel Ağız ve Diş Sağlığı Polikliniği, Lüleburgaz’da dört tedavi ünitesi ve klinik içi dental
             tomografi ile hizmet verir. Her tedavi; muayene, gerekli görüntüleme ve hastayla paylaşılan bir tedavi planı
             üzerine kurulur.
           </p>
@@ -96,7 +96,7 @@ export default function AboutPage() {
         <div className="fd-img" data-rv><img src="/maket/img/ee.webp" alt="Dt. Emrecan Eren" loading="lazy" /></div>
         <div className="fd-tx">
           <span className="pg-lbl" data-rv data-en="Founding dentist">Kurucu hekim</span>
-          <h2 className="fd-n" data-rv>Dt. Emrecan<br /><em>Eren</em></h2>
+          <h2 className="fd-n" data-rv data-en="Dr. Emrecan<br /><em>Eren</em>">Dt. Emrecan<br /><em>Eren</em></h2>
           <ol className="fd-tl">
             {FOUNDER.map((f) => (
               <li data-rv key={f.b}><b data-en={f.be}>{f.b}</b><span data-en={f.se}>{f.s}</span></li>

@@ -4,9 +4,9 @@ import { LinksContent } from "./links-content"
 import { pickLanguage } from "./pick-language"
 
 export const metadata: Metadata = {
-  title: "Bağlantılarımız | Özel Emrecan Eren Ağız ve Diş Sağlığı Polikliniği",
+  title: "Bağlantılarımız | Emrecan Eren Özel Ağız ve Diş Sağlığı Polikliniği",
   description:
-    "Özel Emrecan Eren Ağız ve Diş Sağlığı Polikliniği iletişim ve sosyal medya bağlantıları.",
+    "Emrecan Eren Özel Ağız ve Diş Sağlığı Polikliniği iletişim ve sosyal medya bağlantıları.",
   // Bu sayfa yalnızca broşürdeki QR koddan açılır: siteden linklenmez,
   // sitemap'te yer almaz ve arama motorlarına kapalıdır.
   robots: {

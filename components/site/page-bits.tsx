@@ -9,7 +9,7 @@ const siteUpdatedEN = () =>
 export function PageFooter() {
   return (
     <footer className="pg-ft">
-      <span className="ft-l">If you’ve made it this far, we should probably talk.</span>
+      <span className="ft-l">Family business, different toolboxes. — 21collective</span>
       <span>
         21collective © 2025 · {SITE_EDITOR.name} · <span data-en="Contact:">İletişim:</span> <b>{SITE_EDITOR.phone}</b>
       </span>

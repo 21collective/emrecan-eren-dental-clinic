@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   // every page points to itself unless it sets its own canonical
   alternates: { canonical: "./" },
   title: {
-    default: "Lüleburgaz Diş Hekimi | Dt. Emrecan Eren Ağız ve Diş Sağlığı Polikliniği",
+    default: "Lüleburgaz Diş Hekimi | Emrecan Eren Özel Ağız ve Diş Sağlığı Polikliniği",
     template: "%s | Dt. Emrecan Eren",
   },
   description:
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     type: "website",
     locale: "tr_TR",
     url: "https://www.emrecaneren.com",
-    siteName: "Dt. Emrecan Eren Ağız ve Diş Sağlığı Polikliniği",
+    siteName: "Emrecan Eren Özel Ağız ve Diş Sağlığı Polikliniği",
     title: "Lüleburgaz Diş Hekimi | Dt. Emrecan Eren",
     description: "Lüleburgaz'ın mikroskop destekli diş kliniği. Bahçeden içeri buyurun.",
     images: [{ url: "/maket/og.jpg", width: 1200, height: 630, alt: "Kliniğin bahçeli maket görünümü" }],
