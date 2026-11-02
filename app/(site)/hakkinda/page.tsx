@@ -1,6 +1,7 @@
 import { Fragment } from "react"
 import type { Metadata } from "next"
 import { BackHome, PageFooter } from "@/components/site/page-bits"
+import { Gallery, type Shot } from "@/components/site/gallery"
 import { CLINIC } from "@/lib/clinic"
 import { TX, two } from "@/lib/content"
 
@@ -25,6 +26,21 @@ const WALK = [
   { at: "room_k3", z: "0.74", img: "k3", t: "Klinik 3", te: "Clinic 3", d: "Tedavi ünitesi · Artemis.", de: "Treatment unit · Artemis." },
   { at: "room_k4", z: "0.74", img: "k4", t: "Klinik 4", te: "Clinic 4", d: "Tedavi ünitesi · Athena.", de: "Treatment unit · Athena." },
   { at: "room_tomo", z: "0.74", img: "tomo", t: "Görüntüleme", te: "Imaging", d: "Dental volumetrik tomografi (CBCT). İmplant, cerrahi ve kanal tedavisi planlamasında üç boyutlu görüntü sağlar.", de: "Dental cone-beam CT (CBCT): a 3D image for planning implants, surgery and root canal treatment." },
+]
+
+// the clinic, inside and out, day and night
+const GALLERY: Shot[] = [
+  { img: "g-cephe", t: "Hazal Sokak cephesi", te: "The Hazal Street front", shape: "wide" },
+  { img: "g-ahsap-kapi", t: "Bahçe kapısı", te: "The garden gate", shape: "tall" },
+  { img: "g-bahce-yolu", t: "Bahçeden girişe", te: "Through the garden to the door", shape: "wide" },
+  { img: "g-giris", t: "Giriş holü", te: "Entrance hall" },
+  { img: "g-bekleme", t: "Bekleme alanı", te: "Waiting area", shape: "tall" },
+  { img: "g-oda", t: "Tedavi odası", te: "Treatment room" },
+  { img: "g-koridor", t: "Klinik koridoru", te: "Clinic corridor" },
+  { img: "g-hasir", t: "Bekleme köşesi", te: "A corner to wait in", shape: "tall" },
+  { img: "g-logo", t: "Kliniğin işareti", te: "The clinic’s mark", shape: "tall" },
+  { img: "g-gece-giris", t: "Akşam girişi", te: "The entrance at night", shape: "tall" },
+  { img: "g-gece-bahce", t: "Akşam bahçe", te: "The garden at night", shape: "tall" },
 ]
 
 const FOUNDER = [
@@ -90,6 +106,14 @@ export default function AboutPage() {
             ))}
           </div>
         </div>
+      </section>
+
+      <section className="phs bx-wrap" aria-label="Klinikten kareler" data-en-label="Around the clinic">
+        <div className="phs-hd">
+          <span className="pg-lbl" data-en="Around the clinic">Klinikten kareler</span>
+          <h2 className="phs-h" data-en="A garden, a door, <em>four rooms.</em>">Bir bahçe, bir kapı, <em>dört oda.</em></h2>
+        </div>
+        <Gallery shots={GALLERY} />
       </section>
 
       <section className="fd bx-wrap">

@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import { ContactForm } from "@/components/contact/contact-form"
 import { BackHome, PageFooter } from "@/components/site/page-bits"
+import { Gallery, type Shot } from "@/components/site/gallery"
 import { CLINIC, HOURS } from "@/lib/clinic"
 
 export const metadata: Metadata = {
@@ -15,6 +16,12 @@ const DAYS_EN = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturd
 const DIRECTIONS =
   "https://www.google.com/maps/dir/?api=1&destination=" +
   encodeURIComponent("Emrecan Eren Ağız ve Diş Sağlığı Polikliniği, Hazal Sk. 44/A, Lüleburgaz")
+
+// what the street side looks like, so visitors recognise the door
+const FIND: Shot[] = [
+  { img: "g-cephe", t: "Hazal Sokak cephesi", te: "The Hazal Street front", shape: "wide" },
+  { img: "g-bahce-yolu", t: "Bahçeden girişe", te: "Through the garden to the door", shape: "wide" },
+]
 
 export default function ContactPage() {
   return (
@@ -68,6 +75,13 @@ export default function ContactPage() {
           </div>
         </div>
       </div>
+      <section className="phs" aria-label="Kliniği tanıyın" data-en-label="Find the door">
+        <div className="phs-hd">
+          <span className="pg-lbl" data-en="Find the door">Kliniği tanıyın</span>
+          <h2 className="phs-h" data-en="The white house <em>with the garden.</em>">Bahçeli, <em>beyaz yapı.</em></h2>
+        </div>
+        <Gallery shots={FIND} />
+      </section>
       <ContactForm />
       <PageFooter />
     </section>
