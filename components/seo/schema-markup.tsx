@@ -1,7 +1,7 @@
 import Script from 'next/script'
 
 interface SchemaMarkupProps {
-  type: 'organization' | 'localBusiness' | 'article' | 'breadcrumb' | 'faq'
+  type: 'organization' | 'localBusiness' | 'article'
   data?: any
 }
 
@@ -15,7 +15,7 @@ export function SchemaMarkup({ type, data }: SchemaMarkupProps) {
           "name": "Emrecan Eren Özel Ağız ve Diş Sağlığı Polikliniği",
           "alternateName": "Dt. Emrecan Eren",
           "url": "https://www.emrecaneren.com",
-          "logo": "https://www.emrecaneren.com/images/ee_logo.png",
+          "logo": "https://www.emrecaneren.com/apple-icon.png",
           "description": "Lüleburgaz'da mikroskop destekli, kanıta dayalı diş hekimliği uygulayan ağız ve diş sağlığı polikliniği.",
           "address": {
             "@type": "PostalAddress",
@@ -48,7 +48,7 @@ export function SchemaMarkup({ type, data }: SchemaMarkupProps) {
           "name": "Emrecan Eren Özel Ağız ve Diş Sağlığı Polikliniği",
           "founder": { "@id": "https://www.emrecaneren.com/hakkinda#dr-eren" },
           "sameAs": ["https://www.instagram.com/dtemrecaneren", "https://www.youtube.com/@lifeindentistry"],
-          "image": "https://www.emrecaneren.com/images/ee_logo.png",
+          "image": "https://www.emrecaneren.com/apple-icon.png",
           "address": {
             "@type": "PostalAddress",
             "streetAddress": "8 Kasım Mahallesi, Hazal Sokak, No:44/A",
@@ -134,7 +134,7 @@ export function SchemaMarkup({ type, data }: SchemaMarkupProps) {
             "name": "Emrecan Eren Özel Ağız ve Diş Sağlığı Polikliniği",
             "logo": {
               "@type": "ImageObject",
-              "url": "https://www.emrecaneren.com/images/ee_logo.png"
+              "url": "https://www.emrecaneren.com/apple-icon.png"
             }
           },
           "datePublished": data?.datePublished,
@@ -153,32 +153,6 @@ export function SchemaMarkup({ type, data }: SchemaMarkupProps) {
             "@id": "https://www.emrecaneren.com/hakkinda#dr-eren",
             "name": "Dt. Emrecan Eren"
           }
-        }
-
-      case 'breadcrumb':
-        return {
-          "@context": "https://schema.org",
-          "@type": "BreadcrumbList",
-          "itemListElement": data?.items?.map((item: any, index: number) => ({
-            "@type": "ListItem",
-            "position": index + 1,
-            "name": item.name,
-            "item": item.url
-          }))
-        }
-
-      case 'faq':
-        return {
-          "@context": "https://schema.org",
-          "@type": "FAQPage",
-          "mainEntity": data?.questions?.map((q: any) => ({
-            "@type": "Question",
-            "name": q.question,
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": q.answer
-            }
-          }))
         }
 
       default:

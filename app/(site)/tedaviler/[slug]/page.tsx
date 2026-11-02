@@ -15,8 +15,9 @@ export function generateStaticParams() {
   return [...TX.map((t) => ({ slug: t.slug })), ...LOCAL_SERVICES.map((s) => ({ slug: s.slug }))]
 }
 
-export function generateMetadata({ params }: { params: { slug: string } }): Metadata {
-  const t = txBySlug(params.slug)
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params
+  const t = txBySlug(slug)
   if (t) {
     return {
       title: t.meta.title,
@@ -26,7 +27,7 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
       openGraph: { title: t.meta.title, description: t.meta.description, url: `/tedaviler/${t.slug}` },
     }
   }
-  const s = getLocalService(params.slug)
+  const s = getLocalService(slug)
   if (!s) return {}
   return {
     title: { absolute: `${s.title} | Dt. Emrecan Eren` },
@@ -209,10 +210,11 @@ function LocalDetail({ s }: { s: LocalService }) {
   )
 }
 
-export default function TreatmentRoute({ params }: { params: { slug: string } }) {
-  const t = txBySlug(params.slug)
+export default async function TreatmentRoute({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params
+  const t = txBySlug(slug)
   if (t) return <TreatmentDetail t={t} />
-  const s = getLocalService(params.slug)
+  const s = getLocalService(slug)
   if (!s) notFound()
   return <LocalDetail s={s} />
 }

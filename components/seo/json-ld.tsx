@@ -51,28 +51,5 @@ export const schemas = {
         "text": faq.answer
       }
     }))
-  }),
-
-  blogPosting: (title: string, description: string, datePublished: string, dateModified: string, imageUrl: string) => ({
-    "@context": "https://schema.org",
-    "@type": "BlogPosting",
-    "headline": title,
-    "description": description,
-    "image": imageUrl,
-    "author": {
-      "@type": "Person",
-      "name": "Dt. Emrecan Eren",
-      "@id": "https://www.emrecaneren.com/hakkinda#dr-eren"
-    },
-    "publisher": {
-      "@type": "Organization",
-      "name": "Emrecan Eren Diş Kliniği",
-      "logo": {
-        "@type": "ImageObject",
-        "url": "https://www.emrecaneren.com/logo.png"
-      }
-    },
-    "datePublished": datePublished,
-    "dateModified": dateModified
   })
 }

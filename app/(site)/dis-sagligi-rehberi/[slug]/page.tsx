@@ -14,8 +14,9 @@ export function generateStaticParams() {
   return GD.map((g) => ({ slug: g.slug }))
 }
 
-export function generateMetadata({ params }: { params: { slug: string } }): Metadata {
-  const g = gdBySlug(params.slug)
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params
+  const g = gdBySlug(slug)
   if (!g) return {}
   return {
     title: g.meta.title || g.title,
@@ -29,8 +30,9 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
 const fmtDate = (iso: string, locale: string) =>
   new Date(iso.slice(0, 10) + "T12:00:00").toLocaleDateString(locale, { day: "numeric", month: "long", year: "numeric" })
 
-export default function GuideArticle({ params }: { params: { slug: string } }) {
-  const g = gdBySlug(params.slug)
+export default async function GuideArticle({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params
+  const g = gdBySlug(slug)
   if (!g) notFound()
   const pillar = txBySlug(g.tx)
   const modified = g.dateModified || SITE_UPDATED

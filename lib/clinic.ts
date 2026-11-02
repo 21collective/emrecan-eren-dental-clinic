@@ -37,16 +37,6 @@ export const HOURS: { day: string; open: string; close: string }[] = [
   { day: "Pazar", open: "11:00", close: "17:00" },
 ]
 
-export const NAV: { name: string; href: string }[] = [
-  { name: "Anasayfa", href: "/" },
-  { name: "Hakkımızda", href: "/hakkinda" },
-  { name: "Ekibimiz", href: "/ekibimiz" },
-  { name: "Tedaviler", href: "/tedaviler" },
-  { name: "Diş Sağlığı Rehberi", href: "/dis-sagligi-rehberi" },
-  { name: "Kariyer", href: "/kariyer" },
-  { name: "İletişim", href: "/iletisim" },
-]
-
 export const TREATMENTS: { name: string; href: string; blurb: string }[] = [
   { name: "Mikroskopik Diş Tedavisi", href: "/tedaviler/mikroskopik-dis-tedavisi", blurb: "Kanal tedavisi ve dolgu, dişi büyüterek görerek." },
   { name: "İmplant Tedavisi", href: "/tedaviler/implant-tedavisi", blurb: "Eksik dişlerin yerine, tomografiyle planlanmış implant." },

@@ -1,271 +1,46 @@
-# Dt. Emrecan Eren Diş Kliniği Web Sitesi
+# Emrecan Eren Özel Ağız ve Diş Sağlığı Polikliniği — web sitesi
 
-Modern, SEO-optimized dental clinic website built with Next.js 14, Tailwind CSS, and GSAP animations.
+Next.js 16 (App Router) ile yazılmış, Lüleburgaz'daki kliniğin sitesi. Ana sayfada kliniğin
+bahçeli 3B maketi (three.js) açılır; iç sayfalar maketin üstünde, bölüm bölüm sahneler olarak gelir.
 
-## 🎯 Proje Özellikleri
+## Yapı
 
-- **Framework**: Next.js 14 (App Router)
-- **Styling**: Tailwind CSS + Shadcn/ui
-- **Animations**: GSAP (TextPlugin, ScrollTrigger)
-- **SEO**: Schema.org JSON-LD (E-E-A-T compliant)
-- **Backend**: Strapi CMS (Headless)
-- **Database**: PostgreSQL
-- **Deployment**: Docker + CapRover
+| Yol | İçerik |
+| --- | --- |
+| `app/(site)/` | Sitenin tüm sayfaları; `layout.tsx` maketi bir kez kurar, sayfalar üstünde açılır |
+| `app/(site)/maket.css`, `site.css` | Stil. `maket.css` üretilir, elle değişiklikler `site.css`'e |
+| `components/maket/` | Maket köprüsü, sayfa katmanı, sahne rayı (`scenes.tsx`). `markup.ts` üretilir |
+| `components/site/page-bits.tsx` | Ortak sayfa parçaları: alt bilgi, SSS, içindekiler |
+| `lib/` | İçerik: tedaviler ve rehber yazıları (`content.json`), klinik bilgileri (`clinic.ts`), SSS |
+| `public/maket/` | Maket betiği, three.js, posterler ve fotoğraflar |
+| `app/links/` | QR kodun açtığı bağlantı sayfası (TR/EN/BG) |
 
-## 🎨 Tasarım Sistemi
-
-### Renk Paleti
-```css
---cream: #f0ece1      /* Arka plan */
---brown: #725649      /* Metin/Başlıklar */
---vizon: #886e57      /* Vurgu/Butonlar */
---grey: #b6b7b1       /* İkincil elementler */
-```
-
-## 📁 Proje Yapısı
-
-```
-ee_web/
-├── app/                          # Next.js App Router
-│   ├── page.tsx                  # Anasayfa
-│   ├── hakkinda/page.tsx         # Hakkımızda
-│   ├── ekibimiz/page.tsx         # Ekibimiz (Strapi CMS)
-│   ├── iletisim/page.tsx         # İletişim
-│   ├── kariyer/page.tsx          # Kariyer
-│   ├── tedaviler/                # Tedavi sayfaları
-│   │   ├── page.tsx              # Tedaviler ana sayfa
-│   │   └── implant-tedavisi/     # Örnek tedavi detay
-│   └── dis-sagligi-rehberi/      # Blog (TODO)
-├── components/
-│   ├── ui/                       # Shadcn/ui components
-│   ├── layout/                   # Header, Footer
-│   ├── home/                     # Anasayfa sections (GSAP animations)
-│   ├── team/                     # Ekip üyeleri component
-│   ├── treatment/                # Tedavi sayfası components
-│   └── seo/                      # JSON-LD schemas
-├── lib/
-│   └── utils.ts                  # Utility functions
-└── content.md                    # İçerik planı
-```
-
-## 🚀 Kurulum ve Çalıştırma
-
-### Gereksinimler
-- Node.js 18+
-- npm veya yarn
-
-### Development
+## Geliştirme
 
 ```bash
-# Dependencies yükle
 npm install
-
-# Development server başlat
-npm run dev
+npm run dev          # geliştirme sunucusu
+npm run build        # üretim derlemesi (output: standalone)
 ```
 
-Site `http://localhost:3000` adresinde çalışacaktır.
-
-### Production Build
+Çalışan geliştirme sunucusunun `.next` klasörüne dokunmadan önizleme derlemesi almak için:
 
 ```bash
-npm run build
-npm start
+NEXT_DIST_DIR=.next-preview npm run build
+NEXT_DIST_DIR=.next-preview npx next start -p 3006
 ```
 
-## 📊 SEO ve Schema.org
+Ortam değişkenleri `.env.example` içinde. İletişim formu ve iş başvuruları ayrı başvuru
+panelinden (`NEXT_PUBLIC_CONTACT_API`) geçer; bu sitede sunucu tarafı form işleme yoktur.
 
-### Implemented Schemas:
-1. **Dentist/MedicalClinic** (Anasayfa)
-2. **Physician** (Hakkında sayfası)
-3. **MedicalProcedure** (Tedavi sayfaları)
-4. **FAQPage** (SSS bölümleri)
-5. **BlogPosting** (Blog yazıları - TODO)
+## İçerik kuralları
 
-### E-E-A-T Compliance:
-- ✅ Physician schema ile uzman otoritesi
-- ✅ TDB üyelik bilgisi
-- ✅ Akademik geçmiş ve sertifikalar
-- ✅ Author box her tedavi sayfasında
-- ✅ Tıbbi sorumluluk reddi
+Tüm metinler 2025 Sağlık Hizmetlerinde Tanıtım ve Bilgilendirme Yönetmeliği'ne uyar:
+fiyat ya da kampanya yok, üstünlük iddiası yok, kliniğin hekimleri için "uzman" yok, marka adı
+yok, hasta yorumu yok, sonuç garantisi yok, kaynaksız istatistik yok. Her sayfada son güncelleme
+tarihi ve site editörü (21collective – Mertcan Eren · 0 542 689 80 44) görünür; içerik
+değişince `lib/clinic.ts` içindeki `SITE_UPDATED` güncellenir.
 
-### Yasal Uyumluluk:
-- ❌ Hasta yorumları YOK (Türkiye tıbbi reklam yasası)
-- ❌ Fiyat bilgisi YOK (Açıklama metni ile değişkenlik vurgusu)
-- ✅ Bilgilendirme amaçlı içerik uyarısı
+## Yayın
 
-## 🎬 GSAP Animasyonlar
-
-### Hero Section
-- **TextPlugin**: H1 başlığı karakter karakter animasyon
-- **Duration**: 2 saniye
-- **Delay**: 0.5 saniye
-
-### Why Choose Us Section
-- **Title Animation**: Fade-in from bottom
-- **Cards Animation**: Stagger animation with scale + bounce effect
-- **Ease**: "back.out(1.2)" for smooth bounce
-
-### Services Section
-- **ScrollTrigger**: Her kart scroll'da fade-in + slide-up
-- **Stagger**: 0.1 saniye gecikme
-- **Trigger**: "top bottom-=100"
-
-### Contact Form Section
-- **Scale + Fade**: Form kartı scale-up ve fade-in
-- **Duration**: 1 saniye
-- **Ease**: "power3.out"
-
-### Reusable Components
-- **AnimatedSection**: 6 farklı animasyon tipi (fade-up, slide-left, scale-up, vb.)
-- **ParallaxSection**: Parallax scroll efekti
-
-## 📝 Strapi Backend Content Types
-
-### 1. team_members ✅
-   - name, title, bio
-   - photo (Media)
-   - email, linkedin
-   - order (sorting), isActive (boolean)
-   - **Status**: Implemented, ready for use
-
-### 2. blog_posts ⏳
-   - title, slug, excerpt, content (Rich Text)
-   - featured_image (Media)
-   - category, published_at
-   - **Status**: TODO
-
-### 3. appointment_requests ⏳
-   - name, phone, message
-   - created_at
-   - **Status**: TODO (form ready, API integration needed)
-
-### 4. job_applications ⏳
-   - name, email, phone, position
-   - cv (Media)
-   - created_at
-   - **Status**: TODO (form ready, API integration needed)
-
-### API Endpoints:
-- `POST /api/appointment-requests` - Randevu formu
-- `POST /api/job-applications` - Kariyer başvurusu
-- `GET /api/blog-posts` - Blog yazıları listesi
-- `GET /api/blog-posts/:slug` - Blog detay
-
-## 🐳 Docker Deployment
-
-### Frontend (Next.js)
-
-```dockerfile
-# Dockerfile
-FROM node:18-alpine AS base
-WORKDIR /app
-COPY package*.json ./
-RUN npm ci
-COPY . .
-RUN npm run build
-
-FROM node:18-alpine AS runner
-WORKDIR /app
-COPY --from=base /app/.next ./.next
-COPY --from=base /app/node_modules ./node_modules
-COPY --from=base /app/package.json ./package.json
-EXPOSE 3000
-CMD ["npm", "start"]
-```
-
-### Backend (Strapi + PostgreSQL)
-
-```yaml
-# docker-compose.yml
-version: '3'
-services:
-  postgres:
-    image: postgres:14
-    environment:
-      POSTGRES_DB: strapi
-      POSTGRES_USER: strapi
-      POSTGRES_PASSWORD: strapi
-    volumes:
-      - postgres_data:/var/lib/postgresql/data
-
-  strapi:
-    image: strapi/strapi
-    environment:
-      DATABASE_CLIENT: postgres
-      DATABASE_HOST: postgres
-      DATABASE_PORT: 5432
-      DATABASE_NAME: strapi
-      DATABASE_USERNAME: strapi
-      DATABASE_PASSWORD: strapi
-    volumes:
-      - strapi_data:/srv/app
-    ports:
-      - "1337:1337"
-    depends_on:
-      - postgres
-
-volumes:
-  postgres_data:
-  strapi_data:
-```
-
-## 🔧 Environment Variables
-
-```env
-# .env.local
-NEXT_PUBLIC_SITE_URL=https://www.emrecaneren.com
-NEXT_PUBLIC_STRAPI_URL=http://localhost:1337
-STRAPI_API_TOKEN=your_api_token_here
-```
-
-## 📱 Responsive Design
-
-- **Desktop**: 3 sütun grid
-- **Tablet**: 2 sütun grid
-- **Mobile**: 1 sütun, stack layout
-- **Breakpoints**: Tailwind default (sm: 640px, md: 768px, lg: 1024px, xl: 1280px)
-
-## 🎯 Hedef Anahtar Kelimeler
-
-### Ana Kelimeler:
-- Lüleburgaz diş hekimi
-- Lüleburgaz diş kliniği
-- Lüleburgaz implant
-- Lüleburgaz ortodonti
-
-### Uzun Kuyruk:
-- Lüleburgaz mikroskopik diş tedavisi
-- Lüleburgaz estetik diş hekimi
-- Lüleburgaz kanal tedavisi
-- Lüleburgaz çocuk diş hekimi
-
-## 📈 Performance Optimizations
-
-- ✅ Next.js Image optimization
-- ✅ Font optimization (next/font)
-- ✅ Code splitting (automatic)
-- ✅ Static generation where possible
-- ✅ Lazy loading for images
-- ⏳ TODO: Implement ISR for blog posts
-
-## 🤝 Katkıda Bulunma
-
-Bu proje Dr. Emrecan Eren Diş Kliniği için özel olarak geliştirilmiştir.
-
-## 📄 Lisans
-
-Tüm hakları saklıdır © 2025 Dt. Emrecan Eren
-
----
-
-**Geliştirici Notları:**
-- Gerçek içerik (fotoğraflar, adres, telefon) eklenmeli
-- Google Maps embed kodu eklenmeli
-- Strapi backend kurulumu yapılmalı
-- Form API entegrasyonları tamamlanmalı
-- Blog sayfaları implementasyonu
-- Kariyer sayfası implementasyonu
-- Gizlilik Politikası ve Kullanım Koşulları sayfaları
-- Google Analytics entegrasyonu
-- Google Search Console kurulumu
+Docker (`Dockerfile`, standalone çıktı) ile CapRover üzerinden (`captain-definition`).

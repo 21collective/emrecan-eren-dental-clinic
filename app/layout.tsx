@@ -39,7 +39,7 @@ export default function RootLayout({
   return (
     <html lang="tr" className={josefin.variable}>
       {/* the site layout's inline script sets the page-open class before hydration */}
-      <body className="antialiased" suppressHydrationWarning>
+      <body suppressHydrationWarning>
         {children}
       </body>
     </html>

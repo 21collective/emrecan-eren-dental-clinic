@@ -2,7 +2,7 @@
 
 import Image from "next/image"
 import { useState } from "react"
-import { Phone, MapPin, Instagram, ArrowUpRight } from "lucide-react"
+import { Phone, MapPin, ArrowUpRight } from "lucide-react"
 import type { Lang } from "./pick-language"
 import { SITE_EDITOR, SITE_UPDATED } from "@/lib/clinic"
 
@@ -100,6 +100,17 @@ const TEAM: {
     role: { tr: "Diyetisyen", en: "Dietitian", bg: "Диетолог" },
   },
 ]
+
+// lucide no longer ships brand marks; same 24px stroke style as its other icons
+function Instagram(props: React.SVGProps<SVGSVGElement>) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" {...props}>
+      <rect x="2" y="2" width="20" height="20" rx="5" />
+      <circle cx="12" cy="12" r="4" />
+      <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+    </svg>
+  )
+}
 
 const instagramUrl = (handle: string) => `https://www.instagram.com/${handle}/`
 

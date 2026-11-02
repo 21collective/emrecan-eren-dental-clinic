@@ -21,8 +21,8 @@ export const viewport: Viewport = {
   themeColor: "#725649",
 }
 
-export default function LinksPage() {
-  const initialLang = pickLanguage(headers().get("accept-language"))
+export default async function LinksPage() {
+  const initialLang = pickLanguage((await headers()).get("accept-language"))
 
   return <LinksContent initialLang={initialLang} />
 }

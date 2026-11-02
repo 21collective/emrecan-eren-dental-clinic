@@ -49,7 +49,7 @@ export function Scenes({ path }: { path: string }) {
       k.classList.toggle("sc-end", !isScene[i] && tone[i] !== tone[i + 1] && !isFooter(k))
       if (isScene[i]) list.push({ el: k, label: labelOf(k, i, en) })
     })
-    const eb = kids[0]?.querySelector(".pg-eb, .dt-eb b")?.textContent?.match(/\d{2}/)
+    const eb = kids[0]?.querySelector(".pg-eb, .dt-eb b")?.textContent?.match(/\d{2,3}/)
     if (eb) kids[0].dataset.n = eb[0]
     setScenes(list)
     setCur(0)
