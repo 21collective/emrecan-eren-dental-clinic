@@ -30,8 +30,8 @@ NEXT_DIST_DIR=.next-preview npm run build
 NEXT_DIST_DIR=.next-preview npx next start -p 3006
 ```
 
-Ortam değişkenleri `.env.example` içinde. İletişim formu ve iş başvuruları ayrı başvuru
-panelinden (`NEXT_PUBLIC_CONTACT_API`) geçer; bu sitede sunucu tarafı form işleme yoktur.
+Ortam değişkenleri `.env.example` içinde. İş başvuruları ayrı başvuru paneline
+(basvuru.emrecaneren.com) bağlantı verir; bu sitede form işleme yoktur.
 
 ## İçerik kuralları
 

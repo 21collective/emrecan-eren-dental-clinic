@@ -16,28 +16,24 @@ export const metadata: Metadata = {
 // English strings sit in data-en; maket.js swaps them in when the visitor picks EN
 const AREAS = TX.map((t) => ({ tr: t.br, en: t.brEn }))
 
-// each stop flies the model behind the page to that room (data-at)
-const WALK = [
-  { at: "gate", z: "0.62", img: "kapi", t: "Giriş", te: "Entrance", d: "8 Kasım Mah. Hazal Sk. No:44/A, Lüleburgaz.", de: "8 Kasım Dist., Hazal St. No:44/A, Lüleburgaz." },
-  { at: "room_resep", z: "0.74", img: "resepsiyon", t: "Danışma", te: "Reception", d: "Randevu, hasta kaydı ve anamnez formu.", de: "Appointments, patient registration and medical history form." },
-  { at: "room_bekle", z: "0.74", img: "salon", t: "Bekleme", te: "Waiting area", d: "Randevu saatinize kadar beklediğiniz alan.", de: "Where you wait until your appointment time." },
-  { at: "room_k1", z: "0.74", img: "k1", t: "Klinik 1", te: "Clinic 1", d: "Tedavi ünitesi · Zeus.", de: "Treatment unit · Zeus." },
-  { at: "room_k2", z: "0.74", img: "k2", t: "Klinik 2", te: "Clinic 2", d: "Tedavi ünitesi · Apollo.", de: "Treatment unit · Apollo." },
-  { at: "room_k3", z: "0.74", img: "k3", t: "Klinik 3", te: "Clinic 3", d: "Tedavi ünitesi · Artemis.", de: "Treatment unit · Artemis." },
-  { at: "room_k4", z: "0.74", img: "k4", t: "Klinik 4", te: "Clinic 4", d: "Tedavi ünitesi · Athena.", de: "Treatment unit · Athena." },
-  { at: "room_tomo", z: "0.74", img: "tomo", t: "Görüntüleme", te: "Imaging", d: "Dental volumetrik tomografi (CBCT). İmplant, cerrahi ve kanal tedavisi planlamasında üç boyutlu görüntü sağlar.", de: "Dental cone-beam CT (CBCT): a 3D image for planning implants, surgery and root canal treatment." },
-]
-
-// the clinic, inside and out, day and night
+// the clinic, outside in: garden, door, the rooms in walking order, then the evening
 const GALLERY: Shot[] = [
   { img: "g-cephe", t: "Hazal Sokak cephesi", te: "The Hazal Street front", shape: "wide" },
   { img: "g-ahsap-kapi", t: "Bahçe kapısı", te: "The garden gate", shape: "tall" },
   { img: "g-bahce-yolu", t: "Bahçeden girişe", te: "Through the garden to the door", shape: "wide" },
+  { img: "kapi", t: "Giriş", te: "Entrance" },
   { img: "g-giris", t: "Giriş holü", te: "Entrance hall" },
+  { img: "resepsiyon", t: "Danışma", te: "Reception" },
   { img: "g-bekleme", t: "Bekleme alanı", te: "Waiting area", shape: "tall" },
+  { img: "salon", t: "Bekleme salonu", te: "Waiting room" },
+  { img: "g-hasir", t: "Bekleme köşesi", te: "A corner to wait in", shape: "tall" },
+  { img: "k1", t: "Klinik 1 · Zeus", te: "Clinic 1 · Zeus" },
+  { img: "k2", t: "Klinik 2 · Apollo", te: "Clinic 2 · Apollo" },
+  { img: "k3", t: "Klinik 3 · Artemis", te: "Clinic 3 · Artemis" },
+  { img: "k4", t: "Klinik 4 · Athena", te: "Clinic 4 · Athena" },
+  { img: "tomo", t: "Görüntüleme · dental tomografi (CBCT)", te: "Imaging · dental CT (CBCT)", shape: "wide" },
   { img: "g-oda", t: "Tedavi odası", te: "Treatment room" },
   { img: "g-koridor", t: "Klinik koridoru", te: "Clinic corridor" },
-  { img: "g-hasir", t: "Bekleme köşesi", te: "A corner to wait in", shape: "tall" },
   { img: "g-logo", t: "Kliniğin işareti", te: "The clinic’s mark", shape: "tall" },
   { img: "g-gece-giris", t: "Akşam girişi", te: "The entrance at night", shape: "tall" },
   { img: "g-gece-bahce", t: "Akşam bahçe", te: "The garden at night", shape: "tall" },
@@ -75,7 +71,7 @@ export default function AboutPage() {
             tomografi ile hizmet verir. Her tedavi; muayene, gerekli görüntüleme ve hastayla paylaşılan bir tedavi planı
             üzerine kurulur.
           </p>
-          <span className="bx-scroll" data-en="Scroll to tour the clinic">Kaydırın, kliniği gezin</span>
+          <span className="bx-scroll" data-en="Scroll to see the clinic">Kaydırın, kliniği görün</span>
         </div>
       </header>
 
@@ -87,31 +83,11 @@ export default function AboutPage() {
         </div>
       </div>
 
-      <section className="walk" aria-label="Klinik altyapı" data-en-label="Clinical setting" style={{ "--n": WALK.length } as React.CSSProperties}>
-        <div className="walk-in">
-          <div className="walk-txt">
-            <span className="pg-lbl" data-en="Clinical setting">Klinik altyapı</span>
-            <div className="walk-num"><b>01</b><span>/ {two(WALK.length - 1)}</span></div>
-            <h2 className="walk-t">{WALK[0].t}</h2>
-            <p className="walk-d">{WALK[0].d}</p>
-            <div className="walk-bar" aria-hidden="true"><i /></div>
-            <span className="walk-hint" data-en="The model behind shows the room you are in.">Arkadaki maket, gezdiğiniz odayı gösterir.</span>
-          </div>
-          <div className="walk-track">
-            {WALK.map((w, i) => (
-              <figure key={w.at} data-at={w.at} data-in={i ? "1" : "0"} data-z={w.z} data-tr={w.t} data-en-t={w.te} data-dtr={w.d} data-den={w.de}>
-                <img src={`/maket/img/${w.img}.webp`} alt={w.t} loading={i < 3 ? "eager" : "lazy"} />
-                <figcaption><i>{two(i)}</i></figcaption>
-              </figure>
-            ))}
-          </div>
-        </div>
-      </section>
-
       <section className="phs bx-wrap" aria-label="Klinikten kareler" data-en-label="Around the clinic">
         <div className="phs-hd">
           <span className="pg-lbl" data-en="Around the clinic">Klinikten kareler</span>
           <h2 className="phs-h" data-en="A garden, a door, <em>four rooms.</em>">Bir bahçe, bir kapı, <em>dört oda.</em></h2>
+          <p className="phs-p" data-en="Entrance, reception, waiting area, four treatment units and in-house dental CT. Tap a photo to see it large.">Giriş, danışma, bekleme alanı, dört tedavi ünitesi ve klinik içi dental tomografi. Büyütmek için fotoğrafa dokunun.</p>
         </div>
         <Gallery shots={GALLERY} />
       </section>

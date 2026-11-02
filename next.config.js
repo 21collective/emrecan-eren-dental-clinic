@@ -1,5 +1,4 @@
 const dev = process.env.NODE_ENV !== 'production'
-const contactApi = process.env.NEXT_PUBLIC_CONTACT_API || 'https://basvuru.emrecaneren.com'
 
 // everything the site loads is its own; the only outside call is the contact form's POST
 const csp = [
@@ -9,7 +8,7 @@ const csp = [
   "style-src 'self' 'unsafe-inline'",
   "img-src 'self' data: blob:",
   "font-src 'self' data:",
-  `connect-src 'self' ${new URL(contactApi).origin}${dev ? ' ws:' : ''}`,
+  `connect-src 'self'${dev ? ' ws:' : ''}`,
   "worker-src 'self' blob:",
   "frame-ancestors 'self'",
   "base-uri 'self'",

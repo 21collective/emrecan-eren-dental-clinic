@@ -1,24 +1,60 @@
 import { Fragment } from "react"
-import { SITE_EDITOR, SITE_UPDATED, siteUpdatedTR } from "@/lib/clinic"
-import { type Block, type Guide, readMin, two } from "@/lib/content"
+import { CLINIC, SITE_EDITOR, SITE_UPDATED, siteUpdatedTR } from "@/lib/clinic"
+import { type Block, type Guide, TX, readMin, two } from "@/lib/content"
 
 const siteUpdatedEN = () =>
   new Date(SITE_UPDATED + "T12:00:00").toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" })
 
-// Every page ends with the agency credit (mandatory) and the last-update line (yönetmelik 5/1-ı).
+const PAGES = [
+  { href: "/", t: "Anasayfa · Maket", te: "Home · Model" },
+  { href: "/hakkinda", t: "Hakkımızda", te: "About" },
+  { href: "/ekibimiz", t: "Ekibimiz", te: "Our team" },
+  { href: "/tedaviler", t: "Tedaviler", te: "Treatments" },
+  { href: "/dis-sagligi-rehberi", t: "Diş sağlığı rehberi", te: "Dental health guide" },
+  { href: "/sik-sorulan-sorular", t: "Sık sorulan sorular", te: "FAQ" },
+  { href: "/kariyer", t: "Kariyer", te: "Careers" },
+  { href: "/iletisim", t: "İletişim", te: "Contact" },
+]
+
+// Every page ends with a site map footer, the agency credit (mandatory) and the last-update line (yönetmelik 5/1-ı).
 export function PageFooter() {
   return (
-    <footer className="pg-ft">
-      <span className="ft-l">Family business, different toolboxes. — 21collective</span>
-      <span>
-        21collective © 2025 · {SITE_EDITOR.name} · <span data-en="Contact:">İletişim:</span> <b>{SITE_EDITOR.phone}</b>
-      </span>
-      <span
-        className="pg-upd"
-        data-en={`Last updated: <time datetime="${SITE_UPDATED}">${siteUpdatedEN()}</time> · Site editor: ${SITE_EDITOR.name}, ${SITE_EDITOR.phone}`}
-      >
-        Son güncelleme: <time dateTime={SITE_UPDATED}>{siteUpdatedTR()}</time> · Site editörü: {SITE_EDITOR.name}, {SITE_EDITOR.phone}
-      </span>
+    <footer className="pg-ft sf">
+      <div className="sf-id">
+        <b className="sf-name">Emrecan Eren</b>
+        <span data-en="Private Oral and Dental Health Polyclinic">{CLINIC.legalName.replace("Emrecan Eren ", "")}</span>
+        <a className="sf-tel" href={CLINIC.phoneHref}>{CLINIC.phone}</a>
+        <a className="pbtn wa-link" href={CLINIC.whatsapp} target="_blank" rel="noopener" data-en="Book on WhatsApp →">WhatsApp ile randevu →</a>
+      </div>
+      <nav className="sf-col" aria-label="Sayfalar" data-en-label="Pages">
+        <span className="pg-lbl" data-en="Pages">Sayfalar</span>
+        <ul>{PAGES.map((x) => <li key={x.href}><a href={x.href} data-en={x.te}>{x.t}</a></li>)}</ul>
+      </nav>
+      <nav className="sf-col" aria-label="Tedaviler" data-en-label="Treatments">
+        <span className="pg-lbl" data-en="Treatments">Tedaviler</span>
+        <ul>{TX.map((t) => <li key={t.slug}><a href={`/tedaviler/${t.slug}`} data-en={t.brEn}>{t.br}</a></li>)}</ul>
+      </nav>
+      <div className="sf-col">
+        <span className="pg-lbl" data-en="Clinic">Klinik</span>
+        <ul>
+          <li><a href={CLINIC.maps} target="_blank" rel="noopener">{CLINIC.street}<br />{CLINIC.city} ↗</a></li>
+          <li><a href={CLINIC.instagram} target="_blank" rel="noopener">Instagram · @emrecanerenadsp ↗</a></li>
+          <li><a href="/iletisim" data-en="Opening hours →">Çalışma saatleri →</a></li>
+          <li><a href="/kvkk" data-en="Privacy notice (KVKK)">KVKK aydınlatma metni</a></li>
+        </ul>
+      </div>
+      <div className="sf-bot">
+        <span className="ft-l">Family business, different toolboxes. — 21collective</span>
+        <span>
+          21collective © 2025 · {SITE_EDITOR.name} · <span data-en="Contact:">İletişim:</span> <b>{SITE_EDITOR.phone}</b>
+        </span>
+        <span
+          className="pg-upd"
+          data-en={`Last updated: <time datetime="${SITE_UPDATED}">${siteUpdatedEN()}</time> · Site editor: ${SITE_EDITOR.name}, ${SITE_EDITOR.phone}`}
+        >
+          Son güncelleme: <time dateTime={SITE_UPDATED}>{siteUpdatedTR()}</time> · Site editörü: {SITE_EDITOR.name}, {SITE_EDITOR.phone}
+        </span>
+      </div>
     </footer>
   )
 }

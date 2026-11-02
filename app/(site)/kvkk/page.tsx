@@ -34,7 +34,7 @@ export default function KvkkPage() {
           <ul>
             <li><strong>Kimlik ve iletişim verileri:</strong> ad soyad, T.C. kimlik numarası, telefon, e-posta, adres.</li>
             <li><strong>Sağlık verileri:</strong> muayene ve tedavi kayıtları, röntgen ve tomografi görüntüleri, anamnez bilgileri, reçeteler.</li>
-            <li><strong>Randevu ve yazışma kayıtları:</strong> telefon, WhatsApp ve internet sitemizdeki iletişim formu üzerinden iletilen ad soyad, telefon, randevu talepleri ve mesajlar. İletişim formu kayıtları, yalnızca kliniğin erişebildiği şifreli panelde tutulur ve görüşme tamamlandıktan sonra silinir.</li>
+            <li><strong>Randevu ve yazışma kayıtları:</strong> telefon ve WhatsApp üzerinden iletilen ad soyad, telefon, randevu talepleri ve mesajlar.</li>
             <li><strong>İş başvurusu verileri:</strong> basvuru.emrecaneren.com başvuru formu aracılığıyla iletilen ad soyad, iletişim bilgileri, başvurulan pozisyon ve özgeçmiş.</li>
             <li><strong>Görsel veriler:</strong> yalnızca açık rızanızla ve tedavi amacıyla alınan ağız içi fotoğraflar.</li>
           </ul>
