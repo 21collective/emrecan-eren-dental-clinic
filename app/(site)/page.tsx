@@ -12,6 +12,7 @@ export const metadata: Metadata = {
 export default function Home() {
   return (
     <>
+      <SchemaMarkup type="website" />
       <SchemaMarkup type="organization" />
       <SchemaMarkup type="localBusiness" />
       <h1 id="title"><em data-en="Your smile">Gülüşünüz</em><b data-en="grows here<span>.</span>">burada yeşerir<span>.</span></b></h1>

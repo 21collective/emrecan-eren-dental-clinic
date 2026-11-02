@@ -1,13 +1,22 @@
-import Script from 'next/script'
 
 interface SchemaMarkupProps {
-  type: 'organization' | 'localBusiness' | 'article'
+  type: 'organization' | 'localBusiness' | 'article' | 'website'
   data?: any
 }
 
 export function SchemaMarkup({ type, data }: SchemaMarkupProps) {
   const getSchema = () => {
     switch (type) {
+      // Google reads WebSite.name as the site name shown above the result
+      case 'website':
+        return {
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          "name": "Emrecan Eren Özel Ağız ve Diş Sağlığı Polikliniği",
+          "alternateName": ["Emrecan Eren Diş Kliniği", "Dt. Emrecan Eren"],
+          "url": "https://www.emrecaneren.com/",
+          "inLanguage": "tr-TR",
+        }
       case 'organization':
         return {
           "@context": "https://schema.org",
@@ -164,12 +173,12 @@ export function SchemaMarkup({ type, data }: SchemaMarkupProps) {
 
   if (!schema) return null
 
+  // a plain script tag, so the data is in the HTML crawlers fetch rather than injected later
   return (
-    <Script
+    <script
       id={`schema-${type}`}
       type="application/ld+json"
       dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-      strategy="beforeInteractive"
     />
   )
 }
