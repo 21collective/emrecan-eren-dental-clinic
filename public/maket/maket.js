@@ -35,7 +35,7 @@ var HOTEN={gate:'Garden gate — knock to open',vest:'Clinic entrance',win:'Trea
 var DAYEN=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
 function hotLabel(h){if(LANG!=='en')return h.label;if(h.room)return h.room.en;return HOTEN[h.type||h.key]||HOTEN[h.key]||h.label;}
 function applyLang(){var en=LANG==='en';document.documentElement.lang=en?'en':'tr';
-  document.querySelectorAll('[data-en]').forEach(function(el){if(el.dataset.tr===undefined)el.dataset.tr=el.innerHTML;el.innerHTML=en?el.dataset.en:el.dataset.tr;});
+  document.querySelectorAll('[data-en]').forEach(function(el){if(el.dataset.tr===undefined)el.dataset.tr=el.innerHTML;var nx=en?el.dataset.en:el.dataset.tr;if(el.innerHTML!==nx)el.innerHTML=nx;});
   document.querySelectorAll('[data-en-label]').forEach(function(el){if(el.dataset.trLabel===undefined)el.dataset.trLabel=el.getAttribute('aria-label');el.setAttribute('aria-label',en?el.dataset.enLabel:el.dataset.trLabel);});
   var lb=$('#langBtn');lb.textContent=en?'TR':'EN';lb.setAttribute('lang',en?'tr':'en');lb.setAttribute('aria-label',en?'Türkçeye geç':'Switch to English');
   $('#c').setAttribute('aria-label',L('Kliniğin ve bahçesinin 3B maketi: sürükleyerek çevirin, nesnelere dokunun','3D model of the clinic and its garden: drag to spin, tap the objects'));
