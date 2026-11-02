@@ -2,8 +2,8 @@ import type { Metadata } from "next"
 import { BackHome, PageFooter } from "@/components/site/page-bits"
 
 export const metadata: Metadata = {
-  title: "Ekibimiz · Lüleburgaz Diş Hekimleri",
-  description: "Dt. Emrecan Eren diş kliniği ekibi: tedavinizi planlayan ve uygulayan diş hekimleri, klinik asistanları ve hasta danışma ekibi.",
+  title: "Lüleburgaz Diş Hekimleri · Ekibimiz",
+  description: "Lüleburgaz Emrecan Eren Özel Ağız ve Diş Sağlığı Polikliniği diş hekimleri: Dt. Emrecan Eren, Dt. Barkın Ergin, Dt. Mehmet Varyemez, Dt. Rıdvan Doğan ve ekibi.",
   keywords: ["Lüleburgaz diş kliniği ekip", "diş hekimi ekibi", "Dt. Emrecan Eren ekip"],
   alternates: { canonical: "/ekibimiz" },
 }

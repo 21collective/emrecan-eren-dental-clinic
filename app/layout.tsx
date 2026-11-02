@@ -9,20 +9,20 @@ export const metadata: Metadata = {
   // every page points to itself unless it sets its own canonical
   alternates: { canonical: "./" },
   title: {
-    default: "Lüleburgaz Diş Hekimi | Emrecan Eren Özel Ağız ve Diş Sağlığı Polikliniği",
+    default: "Lüleburgaz Diş Kliniği | Emrecan Eren Ağız ve Diş Sağlığı Polikliniği",
     template: "%s | Dt. Emrecan Eren",
   },
   description:
-    "Lüleburgaz Hazal Sokak'ta mikroskop destekli diş kliniği. Kanal tedavisi, implant, şeffaf plak, estetik diş hekimliği ve çocuk diş hekimliği. Dt. Emrecan Eren.",
-  keywords: ["Lüleburgaz diş hekimi", "Lüleburgaz diş kliniği", "Lüleburgaz implant", "Lüleburgaz kanal tedavisi", "Lüleburgaz şeffaf plak"],
+    "Lüleburgaz diş kliniği ve diş hekimi: Emrecan Eren Özel Ağız ve Diş Sağlığı Polikliniği, Hazal Sk. 44/A. Dolgu, kanal, implant, şeffaf plak; akşam ve hafta sonu randevu.",
+  keywords: ["Lüleburgaz diş kliniği", "Lüleburgaz diş hekimi", "Lüleburgaz dişçi", "Lüleburgaz özel diş kliniği", "Lüleburgaz implant", "Lüleburgaz kanal tedavisi", "Lüleburgaz şeffaf plak"],
   authors: [{ name: "Dt. Emrecan Eren" }],
   openGraph: {
     type: "website",
     locale: "tr_TR",
     url: "https://www.emrecaneren.com",
     siteName: "Emrecan Eren Özel Ağız ve Diş Sağlığı Polikliniği",
-    title: "Lüleburgaz Diş Hekimi | Dt. Emrecan Eren",
-    description: "Lüleburgaz'ın mikroskop destekli diş kliniği. Bahçeden içeri buyurun.",
+    title: "Lüleburgaz Diş Kliniği | Emrecan Eren Ağız ve Diş Sağlığı Polikliniği",
+    description: "Lüleburgaz Hazal Sokak'ta mikroskop destekli diş kliniği. Bahçeden içeri buyurun.",
     images: [OG_IMAGE],
   },
   twitter: { card: "summary_large_image", images: ["/maket/og.jpg"] },

@@ -3,8 +3,8 @@ import { BackHome, PageFooter } from "@/components/site/page-bits"
 import { CLINIC, HOURS } from "@/lib/clinic"
 
 export const metadata: Metadata = {
-  title: "Lüleburgaz Diş Hekimi Randevu ve İletişim",
-  description: "Lüleburgaz Dt. Emrecan Eren diş kliniği iletişim bilgileri: Hazal Sokak 44/A adresi, telefon, çalışma saatleri ve yol tarifi.",
+  title: "Lüleburgaz Diş Kliniği Adres, Telefon ve Randevu",
+  description: "Lüleburgaz diş kliniği adresi: 8 Kasım Mah. Hazal Sk. No:44/A. Telefon ve WhatsApp ile randevu, hafta içi akşam ve hafta sonu çalışma saatleri, yol tarifi.",
   keywords: ["Lüleburgaz diş kliniği iletişim", "Lüleburgaz diş hekimi randevu"],
   alternates: { canonical: "/iletisim" },
 }

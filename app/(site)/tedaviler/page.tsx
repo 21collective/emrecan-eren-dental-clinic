@@ -5,7 +5,7 @@ import { TX, two } from "@/lib/content"
 import { LOCAL_SERVICES } from "@/lib/local-seo"
 
 export const metadata: Metadata = {
-  title: "Tedaviler · Lüleburgaz Diş Kliniği",
+  title: "Lüleburgaz Diş Tedavileri · Tüm Tedavi Alanları",
   description:
     "Lüleburgaz Dt. Emrecan Eren kliniğinde tedavi alanları: endodonti, implant, periodontoloji, protetik, estetik, şeffaf plak, oral cerrahi, pedodonti ve bruksizm.",
   alternates: { canonical: "/tedaviler" },

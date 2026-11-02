@@ -3,7 +3,7 @@ import { BackHome, GuideCard, PageFooter } from "@/components/site/page-bits"
 import { GD, GUIDE_CATS } from "@/lib/content"
 
 export const metadata: Metadata = {
-  title: "Diş Sağlığı Rehberi",
+  title: "Diş Sağlığı Rehberi · Lüleburgaz Diş Kliniği",
   description:
     "Lüleburgaz Dt. Emrecan Eren kliniğinden diş sağlığı hakkında bilgilendirme yazıları: implant, ortodonti, kanal tedavisi, diş eti, çocuk diş sağlığı ve daha fazlası.",
   keywords: ["diş sağlığı rehberi", "diş tedavisi bilgileri", "implant rehberi", "ortodonti bilgileri", "kanal tedavisi"],
