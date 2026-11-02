@@ -21,7 +21,7 @@ const JOBS = [
     typeEn: "Full-time · Part-time · Freelance",
     text: "Kliniğin fotoğraf, video ve Instagram üretimini yürütür.",
     textEn: "Runs the clinic’s photo, video and Instagram production.",
-    items: ["Hasta portresi ve ağız içi (intraoral) fotoğraf", "Reels, vlog ve hekimin anlattığı eğitim videoları", "İçerik planı, tasarım ve hesap yönetimi", "Sağlık tanıtım kurallarına uygun içerik"],
+    items: ["Klinik ve ekip fotoğrafı", "Reels, vlog ve hekimin anlattığı eğitim videoları", "İçerik planı, tasarım ve hesap yönetimi", "Sağlık tanıtım kurallarına uygun içerik"],
   },
   {
     title: "Diş Protez Teknisyeni",

@@ -10,7 +10,7 @@
    "leadEn": "Treatment that keeps a tooth when decay, trauma or infection reaches the pulp and root canals, followed by rebuilding the tooth with a composite restoration.",
    "meta": {
     "title": "Lüleburgaz Mikroskop Destekli Diş Tedavisi",
-    "description": "Lüleburgaz'da mikroskop destekli kanal tedavisi ve kompozit dolgu. 25x büyütme ile hassas tedavi. Randevu alın.",
+    "description": "Lüleburgaz'da mikroskop destekli kanal tedavisi ve kompozit dolgu. 25x büyütme altında çalışılır. Randevu alın.",
     "keywords": [
      "mikroskop kanal tedavisi",
      "mikroskopik dolgu",
@@ -324,7 +324,7 @@
    "leadEn": "Diagnosis and staging of gum disease; scaling, root planing, gum contouring and soft-tissue grafts.",
    "meta": {
     "title": "Lüleburgaz Diş Eti Tedavisi (Periodontoloji)",
-    "description": "Lüleburgaz'da diş eti tedavisi. Detartraj, küretaj, pembe estetik, diş eti grefti. Sağlıklı diş etleri. Randevu alın.",
+    "description": "Lüleburgaz'da diş eti tedavisi. Detartraj, küretaj, pembe estetik, diş eti grefti. Randevu alın.",
     "keywords": [
      "diş eti tedavisi Lüleburgaz",
      "diş taşı temizliği",
@@ -445,7 +445,7 @@
    "leadEn": "Restoring lost tooth structure and missing teeth with fixed (crowns, bridges) or removable prostheses; digital impressions and in-clinic design.",
    "meta": {
     "title": "Lüleburgaz Diş Protezi, Kron ve Köprü",
-    "description": "Lüleburgaz'da protetik diş tedavisi. Zirkonyum kaplama, köprü, akrilik protez. Çiğneme fonksiyonunu geri kazanın. Randevu alın.",
+    "description": "Lüleburgaz'da protetik diş tedavisi. Zirkonyum kaplama, köprü, akrilik protez. Çiğneme işlevinin yeniden sağlanması amaçlanır. Randevu alın.",
     "keywords": [
      "zirkonyum kaplama Lüleburgaz",
      "diş protezi",
@@ -623,10 +623,10 @@
     },
     {
      "t": "Kompozit Lamina (Bonding) Tedavisi",
-     "d": "Dişten doku kaldırmadan, tek seansta kompozit malzemelerle estetik düzeltmeler ve boşluk kapama.",
+     "d": "Çoğu durumda dişten doku kaldırmadan, genellikle tek seansta kompozit malzemelerle estetik düzeltmeler ve boşluk kapama.",
      "i": [
-      "Tek seansta tamamlanır",
-      "Dişten doku kaldırılmaz",
+      "Çoğunlukla tek seansta tamamlanır",
+      "Çoğu durumda dişten doku kaldırılmaz",
       "Gerektiğinde onarılabilir",
       "Geri dönüşümlü işlem"
      ]
@@ -1260,7 +1260,7 @@
     },
     {
      "t": "h3",
-     "x": "2. Komşu Dişe Baskı ve Çürük (Sessiz Tehlike)"
+     "x": "2. Komşu Dişe Baskı ve Çürük (Belirti Vermeyebilir)"
     },
     {
      "t": "p",
@@ -1695,7 +1695,7 @@
    "faq": [],
    "meta": {
     "title": "20lik Diş Çekimi Sonrası Beslenme ve Bakım (İlk 72 Saat)",
-    "description": "Gömülü 20 yaş dişi çekimi sonrası ne yenir? Şişlik nasıl iner? Lüleburgaz Dt. Eren kliniği, 'Dry Socket' riskini önleyen, ilk 72 saatlik kritik bakım ve beslenme rehberini paylaşıyor.",
+    "description": "Gömülü 20 yaş dişi çekimi sonrası ne yenir? Şişlik nasıl iner? Lüleburgaz Dt. Eren kliniği, 'Dry Socket' riskini azaltmaya yardımcı, ilk 72 saatlik kritik bakım ve beslenme rehberini paylaşıyor.",
     "keywords": [
      "20 yaş dişi çekimi",
      "gömülü diş çekimi",
@@ -2605,7 +2605,7 @@
     },
     {
      "t": "h3",
-     "x": "2. Uyku Bozuklukları (Sessiz Tehlike)"
+     "x": "2. Uyku Bozuklukları (Belirti Vermeyebilir)"
     },
     {
      "t": "p",
@@ -3531,7 +3531,7 @@
     },
     {
      "t": "p",
-     "x": "Yani, diş eti kanaması bir \"hastalık\" değil, bir §b\"hastalık belirtisidir.\"§/b Vücudunuz size, \"Burada bir istila var ve savaşıyorum, bana yardım et!\" demektedir."
+     "x": "Yani, diş eti kanaması bir \"hastalık\" değil, bir §b\"hastalık belirtisidir.\"§/b Kanama, vücudun diş etindeki iltihaba verdiği bir tepkidir ve muayene gerektiğini gösterir."
     },
     {
      "t": "h2",
@@ -7423,7 +7423,7 @@
     },
     {
      "t": "h2",
-     "x": "En Büyük Tehlike: Süt Dişi Çürüğü Kalıcı Dişi Nasıl Etkiler?"
+     "x": "Süt Dişi Çürüğü Kalıcı Dişi Nasıl Etkileyebilir?"
     },
     {
      "t": "p",
@@ -7459,7 +7459,7 @@
     },
     {
      "t": "p",
-     "x": "Süt dişinden gelen kronik enfeksiyon, tam altında gelişmekte olan kalıcı dişin minesini daha oluşum aşamasındayken zehirler ve bozar."
+     "x": "Süt dişinden gelen kronik enfeksiyon, tam altında gelişmekte olan kalıcı dişin minesinin gelişimini oluşum aşamasında olumsuz etkileyebilir."
     },
     {
      "t": "p",
@@ -7557,7 +7557,7 @@
    "faq": [],
    "meta": {
     "title": "Süt Dişleri Neden Önemlidir? ('Nasıl Olsa Düşecek' Miti)",
-    "description": "Süt dişi çürükleri tedavi edilmeli mi? 'Nasıl olsa düşecek' demeyin! Lüleburgaz Dt. Eren kliniği, süt dişlerinin kalıcı diş sağlığı, çene gelişimi ve konuşma için neden hayati olduğunu kanıta dayalı açıklıyor.",
+    "description": "Süt dişi çürükleri tedavi edilmeli mi? Lüleburgaz Dt. Eren kliniği, süt dişlerinin kalıcı diş sağlığı, çene gelişimi ve konuşma için neden hayati olduğunu kanıta dayalı açıklıyor.",
     "keywords": [
      "süt dişleri",
      "süt dişi çürüğü",

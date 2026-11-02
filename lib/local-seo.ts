@@ -166,7 +166,7 @@ export const LOCAL_SERVICES: LocalService[] = [
       "Altı aydan uzun süredir kontrole gitmeyenler",
     ],
     faqs: [
-      { question: "Diş taşı temizliği dişlere zarar verir mi?", answer: "Hayır. Doğru uygulandığında diş minesine zarar vermez. Temizlik sonrası hissedilen boşluk hissi, taşların doldurduğu alanların açılmasından kaynaklanır." },
+      { question: "Diş taşı temizliği dişlere zarar verir mi?", answer: "Hekim tarafından doğru uygulandığında diş minesine zarar vermemesi hedeflenir. Temizlik sonrası hissedilen boşluk hissi, taşların doldurduğu alanların açılmasından kaynaklanır." },
       { question: "Diş taşı temizliği acıtır mı?", answer: "Çoğu hasta için rahatsızlık hafiftir. Hassasiyeti yüksek olan ya da diş eti iltihabı fazla olan hastalarda bölgesel anestezi uygulanabilir." },
       { question: "Ne sıklıkla diş taşı temizliği yaptırmalıyım?", answer: "Çoğu kişi için yılda bir ya da iki kez yeterlidir. Diş eti hastalığı olan veya hızlı taş oluşan hastalarda daha sık kontrol önerilebilir." },
       { question: "Temizlikten sonra diş eti neden kanıyor?", answer: "İltihaplı diş eti temizlik sırasında kanayabilir. Taşlar alındıktan sonra iltihap azaldıkça kanama da birkaç gün içinde azalır." },
@@ -203,7 +203,7 @@ export const LOCAL_SERVICES: LocalService[] = [
       "Lamina veya kaplama öncesi doğal dişlerinin rengini açmak isteyenler",
     ],
     faqs: [
-      { question: "Diş beyazlatma dişlere zarar verir mi?", answer: "Hekim kontrolünde ve uygun yoğunluktaki jellerle yapılan beyazlatma diş minesine kalıcı zarar vermez. Geçici hassasiyet görülebilir; genellikle birkaç gün içinde geçer." },
+      { question: "Diş beyazlatma dişlere zarar verir mi?", answer: "Hekim kontrolünde ve uygun yoğunluktaki jellerle yapılan beyazlatma diş minesine zarar vermemesi hedeflenerek uygulanır. Geçici hassasiyet görülebilir; genellikle birkaç gün içinde geçer." },
       { question: "Beyazlatmanın etkisi ne kadar sürer?", answer: "Süre beslenme ve alışkanlıklara göre değişir. Çay, kahve ve sigara tüketimi rengin daha erken koyulaşmasına neden olur. Ev tipi plaklarla ara uygulamalar yapılabilir." },
       { question: "Herkes diş beyazlatma yaptırabilir mi?", answer: "Hamilelik ve emzirme döneminde, 18 yaş altında ve tedavi edilmemiş çürük ya da diş eti hastalığı varsa beyazlatma önerilmez. Uygunluk muayenede değerlendirilir." },
       { question: "Dolgularım da beyazlar mı?", answer: "Hayır. Dolgu, kaplama ve laminalar renk değiştirmez. Görünür bölgedeki restorasyonların beyazlatma sonrası yenilenmesi gerekebilir." },
@@ -305,7 +305,7 @@ export const LOCAL_SERVICES: LocalService[] = [
     steps: [
       { title: "Yazın", text: "WhatsApp'tan şikayetinizi ve mümkünse bir fotoğraf gönderin." },
       { title: "Muayene ve röntgen", text: "Ağrının kaynağı belirlenir." },
-      { title: "Acil müdahale", text: "Ağrı ve enfeksiyon kontrol altına alınır." },
+      { title: "Acil müdahale", text: "Ağrı ve enfeksiyonun kontrol altına alınması amaçlanır." },
       { title: "Tedavi planı", text: "Kalıcı tedavi için seçenekler ve randevular planlanır." },
     ],
     forWho: [

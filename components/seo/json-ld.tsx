@@ -13,28 +13,6 @@ export function JsonLd({ data }: JsonLdProps) {
 
 // Predefined Schema.org structures
 export const schemas = {
-  dentist: {
-    "@context": "https://schema.org",
-    "@type": "Dentist",
-    "name": "Emrecan Eren Özel Ağız ve Diş Sağlığı Polikliniği",
-    "image": "https://www.emrecaneren.com/images/klinik-logo.jpg",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "[Gerçek Adres]",
-      "addressLocality": "Lüleburgaz",
-      "addressRegion": "Kırklareli",
-      "postalCode": "[Posta Kodu]",
-      "addressCountry": "TR"
-    },
-    "telephone": "+90 [Telefon]",
-    "url": "https://www.emrecaneren.com",
-    "openingHours": "Mo-Fr 09:00-18:00, Sa 09:00-14:00",
-    "member": {
-      "@type": "Physician",
-      "@id": "https://www.emrecaneren.com/hakkinda#dr-eren"
-    }
-  },
-
   physician: {
     "@context": "https://schema.org",
     "@type": "Physician",

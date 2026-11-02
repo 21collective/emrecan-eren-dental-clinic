@@ -313,3 +313,6 @@ body.night #pages .pg > .bx-marq.bx-marq[data-tone]:not(.sc) { background: #ffc7
 #pages .vals-sc .dt-note { margin: 0; }
 /* three short cards do not fill a screen: this scene sizes to its content */
 #pages .pg > .vals-sc.sc { min-height: 0; }
+
+/* breadcrumb links are small text; give them a thumb-sized hit area without moving the line */
+.dt-crumb a { display: inline-block; padding-block: 12px; margin-block: -12px; }

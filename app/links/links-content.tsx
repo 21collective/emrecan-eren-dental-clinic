@@ -4,6 +4,7 @@ import Image from "next/image"
 import { useState } from "react"
 import { Phone, MapPin, Instagram, ArrowUpRight } from "lucide-react"
 import type { Lang } from "./pick-language"
+import { SITE_EDITOR, SITE_UPDATED } from "@/lib/clinic"
 
 const PHONE_DISPLAY = "0543 486 00 55"
 const PHONE_HREF = "tel:+905434860055"
@@ -12,6 +13,9 @@ const CLINIC_HANDLE = "emrecanerenadsp"
 
 // Kliniğin tescilli adı her dilde aynı kalır.
 const LEGAL_NAME = "Özel Emrecan Eren Ağız ve Diş Sağlığı Polikliniği"
+const UPDATED_LABEL: Record<Lang, string> = { tr: "Son güncelleme", en: "Last updated", bg: "Последна актуализация" }
+const EDITOR_LABEL: Record<Lang, string> = { tr: "Site editörü", en: "Site editor", bg: "Редактор на сайта" }
+const DATE_LOCALE: Record<Lang, string> = { tr: "tr-TR", en: "en-GB", bg: "bg-BG" }
 
 const LANGUAGES: { code: Lang; short: string; label: string }[] = [
   { code: "tr", short: "TR", label: "Türkçe" },
@@ -60,7 +64,7 @@ const TEAM: {
   {
     monogram: "EE",
     handle: "sadeceemmrecaan",
-    name: { tr: "Dt. Emrecan Eren", en: "Dr. Emrecan Eren", bg: "Д-р Emrecan Eren" },
+    name: { tr: "Dt. Emrecan Eren", en: "Dt. Emrecan Eren", bg: "Dt. Emrecan Eren" },
     role: {
       tr: "Kurucu Diş Hekimi",
       en: "Founding Dentist",
@@ -70,19 +74,19 @@ const TEAM: {
   {
     monogram: "BE",
     handle: "trakyadishekimi",
-    name: { tr: "Dt. Barkın Ergin", en: "Dr. Barkın Ergin", bg: "Д-р Barkın Ergin" },
+    name: { tr: "Dt. Barkın Ergin", en: "Dt. Barkın Ergin", bg: "Dt. Barkın Ergin" },
     role: { tr: "Diş Hekimi", en: "Dentist", bg: "Дентален лекар" },
   },
   {
     monogram: "MV",
     handle: "trakyadishekimi0",
-    name: { tr: "Dt. Mehmet Varyemez", en: "Dr. Mehmet Varyemez", bg: "Д-р Mehmet Varyemez" },
+    name: { tr: "Dt. Mehmet Varyemez", en: "Dt. Mehmet Varyemez", bg: "Dt. Mehmet Varyemez" },
     role: { tr: "Diş Hekimi", en: "Dentist", bg: "Дентален лекар" },
   },
   {
     monogram: "RD",
     handle: "trakyadishekimii",
-    name: { tr: "Dt. Rıdvan Doğan", en: "Dr. Rıdvan Doğan", bg: "Д-р Rıdvan Doğan" },
+    name: { tr: "Dt. Rıdvan Doğan", en: "Dt. Rıdvan Doğan", bg: "Dt. Rıdvan Doğan" },
     role: { tr: "Diş Hekimi", en: "Dentist", bg: "Дентален лекар" },
   },
   {
@@ -268,6 +272,10 @@ export function LinksContent({ initialLang }: { initialLang: Lang }) {
 
           <p className="reveal reveal-5 mt-auto pt-12 text-center text-[0.75rem] font-light leading-relaxed text-brown/45">
             {LEGAL_NAME}
+            <br />
+            {UPDATED_LABEL[lang]}: {new Date(SITE_UPDATED + "T12:00:00").toLocaleDateString(DATE_LOCALE[lang], { day: "numeric", month: "long", year: "numeric" })}
+            {" · "}
+            {EDITOR_LABEL[lang]}: {SITE_EDITOR.name}, {SITE_EDITOR.phone}
           </p>
         </div>
       </div>
