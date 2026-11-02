@@ -56,6 +56,17 @@ const nextConfig = {
         destination: '/tedaviler/dis-sikma-bruksizm-tedavisi',
         permanent: true,
       },
+      // misspelled or Turkish-character addresses Google picked up from the old site
+      ...[
+        ['hareketli-alisma-sureci', 'hareketli-protez-alisma-sureci'],
+        ['zirkonyum-dis-renk-secimi', 'zirkonyum-kaplama-renk-secimi'],
+        ['zirkonyum-kaplama-rengi-nasıl-seçimi', 'zirkonyum-kaplama-renk-secimi'],
+        ['sut-dişleri-neden-önemli', 'sut-disleri-neden-onemli'],
+      ].map(([from, to]) => ({
+        source: '/dis-sagligi-rehberi/' + encodeURIComponent(from),
+        destination: '/dis-sagligi-rehberi/' + to,
+        permanent: true,
+      })),
     ]
   },
 }
