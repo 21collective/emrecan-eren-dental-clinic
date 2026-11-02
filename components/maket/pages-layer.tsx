@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useLayoutEffect } from "react"
+import { useEffect, useLayoutEffect, useRef } from "react"
 import { usePathname, useRouter } from "next/navigation"
 import { Scenes } from "./scenes"
 
@@ -22,6 +22,13 @@ export function PagesLayer({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     ;(window as MaketWindow).__mkNav = (href) => router.push(href)
   }, [router])
+
+  // after the first page, page changes animate in (see site.css)
+  const first = useRef(true)
+  useEffect(() => {
+    if (first.current) first.current = false
+    else document.documentElement.classList.add("pg-nav")
+  }, [path])
 
   useEffect(() => {
     const pages = document.getElementById("pages")

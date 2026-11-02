@@ -258,6 +258,19 @@ body.night [data-tone="dark"] { --tone-bg: #0B0F1A; }
   #pages { scroll-snap-type: none; }
 }
 
+/* the hero is always the first scene: give it its scene box before scenes.tsx runs, so nothing shifts */
+#pages .pg > :first-child {
+  min-height: 100vh; box-sizing: border-box; position: relative; display: grid; align-content: end; gap: 22px; overflow: hidden;
+  padding-block: calc(128px + env(safe-area-inset-top,0px)) 152px;
+}
+#pages .pg > :first-child:not(.bx-wrap) {
+  padding-left: max(24px, 5cqi, env(safe-area-inset-left,0px));
+  padding-right: max(24px, 5cqi, env(safe-area-inset-right,0px));
+}
+@media (max-width: 640px) {
+  #pages .pg > :first-child { min-height: 100svh; padding-block: calc(104px + env(safe-area-inset-top,0px)) 150px; }
+}
+
 /* the tilted marquee keeps its own colour band; a full-bleed tone behind a rotated box shears the page edge */
 #pages .pg > .bx-marq.bx-marq[data-tone]:not(.sc) {
   background: #A94B26; color: #F6F3EE; box-shadow: none; clip-path: none;
@@ -358,3 +371,7 @@ body.night #pages .pg > .bx-marq.bx-marq[data-tone]:not(.sc) { background: #ffc7
 /* gallery intro line */
 .phs-p { max-width: 60ch; color: var(--pg-muted); font-size: 16px; line-height: 1.5; }
 .sf-id .pbtn { margin-top: 6px; background: var(--pg-hot); color: #1C241E; border-color: transparent; }
+
+/* a page opened directly paints at once (it started invisible and waited for the slide-in, which a busy phone
+   delays by seconds); the slide-in plays only when moving between pages (html.pg-nav, set by pages-layer.tsx) */
+html:not(.pg-nav) body.page-open .pg > * { animation: none; }

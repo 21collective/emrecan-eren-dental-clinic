@@ -19,7 +19,7 @@ export const CLINIC = {
 
 // Required on health sites (Tanıtım ve Bilgilendirme Yönetmeliği 5/1-ı): last update + editor contact.
 // Bump SITE_UPDATED whenever content changes.
-export const SITE_UPDATED = "2026-10-29"
+export const SITE_UPDATED = "2026-11-02"
 export const SITE_EDITOR = { name: "21collective – Mertcan Eren", phone: "0 542 689 80 44" }
 
 export function siteUpdatedTR() {

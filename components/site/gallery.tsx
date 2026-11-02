@@ -25,7 +25,17 @@ export function Gallery({ shots }: { shots: Shot[] }) {
       <div className="phs-grid">
         {shots.map((s, i) => (
           <button key={s.img} type="button" className={`phs-tile${s.shape ? " " + s.shape : ""}`} onClick={() => setOpen(i)}>
-            <img src={`/maket/img/${s.img}.webp`} alt={s.t} loading="lazy" />
+            {/* tiles load the small cut (-s); the dialog shows the full photo */}
+            <img
+              src={`/maket/img/${s.img}-s.webp`}
+              srcSet={s.shape === "tall"
+                ? `/maket/img/${s.img}-s.webp 480w, /maket/img/${s.img}.webp 900w`
+                : `/maket/img/${s.img}-s.webp 800w, /maket/img/${s.img}.webp 1400w`}
+              sizes={s.shape === "wide" ? "(max-width: 800px) 100vw, 50vw" : "(max-width: 800px) 50vw, 25vw"}
+              alt={s.t}
+              loading="lazy"
+              decoding="async"
+            />
             <span data-en={s.te}>{s.t}</span>
           </button>
         ))}

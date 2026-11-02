@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next"
+import { preload } from "react-dom"
 import "./reset.css"
 import "./globals.css"
 import { josefin } from "./fonts"
@@ -38,6 +39,9 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
+  // fetch the text font with the HTML, so text is not re-laid out when it arrives (both files: ş and ğ are in latin-ext)
+  preload("/fonts/parkinsans-latin.woff2", { as: "font", type: "font/woff2", crossOrigin: "anonymous" })
+  preload("/fonts/parkinsans-latin-ext.woff2", { as: "font", type: "font/woff2", crossOrigin: "anonymous" })
   return (
     <html lang="tr" className={josefin.variable}>
       {/* the site layout's inline script sets the page-open class before hydration */}

@@ -3,7 +3,7 @@
 import { useEffect } from "react"
 
 // Bump when public/maket/maket.js changes so browsers fetch the new scene.
-const MAKET_VERSION = "11"
+const MAKET_VERSION = "12"
 
 function loadScript(src: string) {
   return new Promise<void>((resolve, reject) => {
@@ -29,8 +29,9 @@ export function MaketLoader() {
         .then(() => loadScript(`/maket/maket.js?v=${MAKET_VERSION}`))
         .catch(() => document.documentElement.classList.add("mk-fallback"))
     const ric = (window as Window & { requestIdleCallback?: (cb: () => void, o?: { timeout: number }) => number }).requestIdleCallback
-    if (ric) ric(go, { timeout: 1500 })
-    else setTimeout(go, 200)
+    const start = () => (ric ? ric(go, { timeout: 2500 }) : setTimeout(go, 300))
+    if (document.readyState === "complete") start()
+    else window.addEventListener("load", start, { once: true })
   }, [])
   return null
 }

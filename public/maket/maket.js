@@ -67,10 +67,9 @@ tick();setInterval(tick,15000);
 
 function fallback(){document.documentElement.classList.add('mk-fallback');var c=$('#c');if(c)c.style.display='none';}
 if(!window.THREE){fallback();return;}
-var renderer;
-try{renderer=new THREE.WebGLRenderer({canvas:$('#c'),antialias:true,alpha:true,powerPreference:'high-performance'});if(!renderer.getContext())throw 0;}catch(e){fallback();return;}
-var MOBILE=Math.min(innerWidth,innerHeight)<640;
-renderer.setPixelRatio(Math.min(window.devicePixelRatio||1,2));
+var renderer,MOBILE=Math.min(innerWidth,innerHeight)<640;
+try{renderer=new THREE.WebGLRenderer({canvas:$('#c'),antialias:!MOBILE,alpha:true,powerPreference:'high-performance'});if(!renderer.getContext())throw 0;}catch(e){fallback();return;}
+renderer.setPixelRatio(Math.min(window.devicePixelRatio||1,MOBILE?1.5:2));
 renderer.setClearColor(0x000000,0);
 renderer.shadowMap.enabled=true;renderer.shadowMap.type=THREE.PCFSoftShadowMap;
 var scene=new THREE.Scene(),camera=new THREE.PerspectiveCamera(26,1,1,600);
@@ -1055,6 +1054,8 @@ function frame(now){
   requestAnimationFrame(frame);
   if(document.hidden){last=now;return;}
   if(menuOpen&&T>0){last=now;return;}
+  // an open page covers the model with solid scenes: keep the last frame, skip drawing
+  if(READY&&pageOpen&&document.body.classList.contains('page-open')){last=now;return;}
   var dt=Math.min(0.05,(now-last)/1000);last=now;T+=dt;viewOffset(false,dt);
   if(!dragging){V.ty+=V.vy;V.tp+=V.vp;V.vy*=0.9;V.vp*=0.9;}
   V.ty=clamp(V.ty,LIM.y0,LIM.y1);V.tp=clamp(V.tp,LIM.p0,LIM.p1);V.tz=clamp(V.tz,LIM.z0,LIM.z1);
