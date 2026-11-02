@@ -3,7 +3,7 @@
 import { useEffect } from "react"
 
 // Bump when public/maket/maket.js changes so browsers fetch the new scene.
-const MAKET_VERSION = "13"
+const MAKET_VERSION = "14"
 
 function loadScript(src: string) {
   return new Promise<void>((resolve, reject) => {

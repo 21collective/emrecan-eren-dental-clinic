@@ -17,7 +17,7 @@ var LANG='tr';(function(){var saved=null;try{saved=localStorage.getItem('bahce-l
   // first visit: follow the browser, but crawlers always get Turkish (the indexed language)
   if(/bot|crawl|spider|slurp|lighthouse|inspectiontool|google|bing|yandex/i.test(navigator.userAgent||'')||navigator.webdriver)return;
   var ls=navigator.languages&&navigator.languages.length?navigator.languages:[navigator.language||'tr'];
-  if(!ls.some(function(l){return /^tr/i.test(l);}))LANG='en';})();
+  if(!ls.some(function(l){return /^tr(-|_|$)/i.test(l);}))LANG='en';})();
 if(location.hash==='#en')LANG='en';
 function L(tr,en){return LANG==='en'?en:tr;}
 var EN={
