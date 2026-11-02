@@ -14,6 +14,9 @@ function H2({ children }: { children: React.ReactNode }) {
   return <h2>{children}</h2>
 }
 
+// shown only when the cookieless statistics (Umami) are switched on for the build
+const STATS = !!(process.env.NEXT_PUBLIC_UMAMI_SRC && process.env.NEXT_PUBLIC_UMAMI_ID)
+
 export default function KvkkPage() {
   return (
     <section className="pg" aria-labelledby="pgh-kvkk">
@@ -37,6 +40,9 @@ export default function KvkkPage() {
             <li><strong>Randevu ve yazışma kayıtları:</strong> telefon ve WhatsApp üzerinden iletilen ad soyad, telefon, randevu talepleri ve mesajlar.</li>
             <li><strong>İş başvurusu verileri:</strong> basvuru.emrecaneren.com başvuru formu aracılığıyla iletilen ad soyad, iletişim bilgileri, başvurulan pozisyon ve özgeçmiş.</li>
             <li><strong>Görsel veriler:</strong> yalnızca açık rızanızla ve tedavi amacıyla alınan ağız içi fotoğraflar.</li>
+            {STATS && (
+              <li><strong>Site ziyaret istatistiği:</strong> internet sitemiz çerez kullanmaz. Ziyaret edilen sayfa, sitemize yönlendiren adres, cihaz ve tarayıcı türü ile ülke bilgisi; kimliğinizi belirlemeyen biçimde, toplu sayılar olarak ve kendi sunucumuzda tutulur. IP adresiniz kaydedilmez.</li>
+            )}
           </ul>
 
           <H2>3. İşleme amaçları ve hukuki sebepler</H2>

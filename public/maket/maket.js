@@ -12,7 +12,12 @@ var WA='https://wa.me/905434860055';
 var WAT=WA+'?text='+encodeURIComponent('Merhaba, Hazal Sk.’deki kliniğiniz için randevu almak istiyorum.');
 $('#rdv').href=WAT;$('#mnRdv').href=WAT;$('#navRdv').href=WAT;document.querySelectorAll('.wa-link').forEach(function(a){a.href=WAT;});
 /* ---------- language (TR / EN) ---------- */
-var LANG='tr';try{if(localStorage.getItem('bahce-lang')==='en')LANG='en';}catch(e){}
+var LANG='tr';(function(){var saved=null;try{saved=localStorage.getItem('bahce-lang');}catch(e){}
+  if(saved==='en'||saved==='tr'){LANG=saved;return;}
+  // first visit: follow the browser, but crawlers always get Turkish (the indexed language)
+  if(/bot|crawl|spider|slurp|lighthouse|inspectiontool|google|bing|yandex/i.test(navigator.userAgent||'')||navigator.webdriver)return;
+  var ls=navigator.languages&&navigator.languages.length?navigator.languages:[navigator.language||'tr'];
+  if(!ls.some(function(l){return /^tr/i.test(l);}))LANG='en';})();
 if(location.hash==='#en')LANG='en';
 function L(tr,en){return LANG==='en'?en:tr;}
 var EN={

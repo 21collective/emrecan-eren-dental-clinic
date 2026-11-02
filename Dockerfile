@@ -17,6 +17,10 @@ COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 
 # Build Next.js application
+# NEXT_PUBLIC_* values are baked into the build; CapRover passes the app's env vars as build args
+ARG NEXT_PUBLIC_UMAMI_SRC
+ARG NEXT_PUBLIC_UMAMI_ID
+ENV NEXT_PUBLIC_UMAMI_SRC=$NEXT_PUBLIC_UMAMI_SRC NEXT_PUBLIC_UMAMI_ID=$NEXT_PUBLIC_UMAMI_ID
 ENV NEXT_TELEMETRY_DISABLED=1
 RUN npm run build
 

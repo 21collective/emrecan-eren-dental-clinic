@@ -1,14 +1,17 @@
 const dev = process.env.NODE_ENV !== 'production'
 
-// everything the site loads is its own; the only outside call is the contact form's POST
+// visit statistics (Umami, self-hosted): its origin is allowed only when it is configured
+const umami = process.env.NEXT_PUBLIC_UMAMI_SRC ? ' ' + new URL(process.env.NEXT_PUBLIC_UMAMI_SRC).origin : ''
+
+// everything the site loads is its own, apart from the optional statistics server
 const csp = [
   "default-src 'self'",
   // Next emits inline bootstrap scripts and the JSON-LD blocks; webpack's dev runtime needs eval
-  `script-src 'self' 'unsafe-inline'${dev ? " 'unsafe-eval'" : ''}`,
+  `script-src 'self' 'unsafe-inline'${umami}${dev ? " 'unsafe-eval'" : ''}`,
   "style-src 'self' 'unsafe-inline'",
   "img-src 'self' data: blob:",
   "font-src 'self' data:",
-  `connect-src 'self'${dev ? ' ws:' : ''}`,
+  `connect-src 'self'${umami}${dev ? ' ws:' : ''}`,
   "worker-src 'self' blob:",
   "frame-ancestors 'self'",
   "base-uri 'self'",

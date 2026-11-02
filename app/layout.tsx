@@ -4,6 +4,7 @@ import "./reset.css"
 import "./globals.css"
 import { josefin } from "./fonts"
 import { OG_IMAGE } from "@/lib/clinic"
+import { ContactEvents } from "@/components/site/analytics"
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.emrecaneren.com"),
@@ -42,11 +43,17 @@ export default function RootLayout({
   // fetch the text font with the HTML, so text is not re-laid out when it arrives (both files: ş and ğ are in latin-ext)
   preload("/fonts/parkinsans-latin.woff2", { as: "font", type: "font/woff2", crossOrigin: "anonymous" })
   preload("/fonts/parkinsans-latin-ext.woff2", { as: "font", type: "font/woff2", crossOrigin: "anonymous" })
+  // cookieless visit statistics (Umami), only when both build variables are set
+  const umami = process.env.NEXT_PUBLIC_UMAMI_SRC && process.env.NEXT_PUBLIC_UMAMI_ID
+    ? { src: process.env.NEXT_PUBLIC_UMAMI_SRC, id: process.env.NEXT_PUBLIC_UMAMI_ID }
+    : null
   return (
     <html lang="tr" className={josefin.variable}>
       {/* the site layout's inline script sets the page-open class before hydration */}
       <body suppressHydrationWarning>
         {children}
+        {umami && <script defer src={umami.src} data-website-id={umami.id} data-domains="www.emrecaneren.com" />}
+        {umami && <ContactEvents />}
       </body>
     </html>
   )
