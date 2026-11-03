@@ -24,7 +24,6 @@ export default function TeamPage() {
         <div className="pg-eb" data-en="02 · Team">02 · Ekibimiz</div>
         <h1 className="pg-h" id="pgh-ekibimiz" data-en="Four dentists, <em>one clinic.</em>">Dört hekim, <em>tek klinik.</em></h1>
         <p className="pg-lead" data-en="The dentists who plan and carry out your treatment, with clinical assistants and the patient desk team beside them.">Tedavinizi planlayan ve uygulayan hekimlerimiz; yanlarında klinik asistanları ve hasta danışma ekibi.</p>
-        <span className="pg-place" data-en="On the model: The team">Maketteki yeri: Ekip</span>
       </header>
       <div className="team">
         {TEAM.map((m) => (

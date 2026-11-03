@@ -1,9 +1,9 @@
 import type { Metadata } from "next"
 import { notFound } from "next/navigation"
 import { JsonLd, schemas } from "@/components/seo/json-ld"
-import { ArticleBody, BackHome, Faq, GuideCard, PageFooter, Toc, TrOnlyNote, tocOf } from "@/components/site/page-bits"
+import { ArticleBody, BackHome, Faq, GuideCard, PageFooter, Toc, tocOf } from "@/components/site/page-bits"
 import { CLINIC, HOURS, OG_IMAGE } from "@/lib/clinic"
-import { GD, TX, two, txBySlug, type Treatment } from "@/lib/content"
+import { GD, TX, enText, localEn, two, txBySlug, type Treatment } from "@/lib/content"
 import { LOCAL_SERVICES, NEARBY, getLocalService, type LocalService } from "@/lib/local-seo"
 
 const SITE = "https://www.emrecaneren.com"
@@ -78,7 +78,7 @@ function TreatmentDetail({ t }: { t: Treatment }) {
           <p className="dt-lead" data-en={t.leadEn}>{t.lead}</p>
           <aside className="dt-sum">
             {t.svc.length > 0 && (
-              <div><span className="pg-lbl" data-en="Scope">Kapsam</span><ul>{t.svc.map((x) => <li key={x.t}>{x.t}</li>)}</ul></div>
+              <div><span className="pg-lbl" data-en="Scope">Kapsam</span><ul>{t.svc.map((x) => <li key={x.t} data-en={enText(x.te)}>{x.t}</li>)}</ul></div>
             )}
             <div><span className="pg-lbl" data-en="Planning">Planlama</span><p data-en="Examination · imaging as needed · treatment plan and consent">Muayene · gerekli görüntüleme · tedavi planı ve onam</p></div>
             <Book />
@@ -89,14 +89,12 @@ function TreatmentDetail({ t }: { t: Treatment }) {
       {t.svc.length > 0 && (
         <section className="dt-sec bx-wrap">
           <h2 className="pg-lbl" data-en="Procedures">Uygulamalar</h2>
-          <TrOnlyNote />
           <div className="dt-svc-g">
-            {t.svc.map((x, j) => (
+            {t.svc.map((x) => (
               <article key={x.t}>
-                <i>{two(j)}</i>
-                <h3>{x.t}</h3>
-                {x.d && <p>{x.d}</p>}
-                {x.i.length > 0 && <ul>{x.i.map((y) => <li key={y}>{y}</li>)}</ul>}
+                <h3 data-en={enText(x.te)}>{x.t}</h3>
+                {x.d && <p data-en={enText(x.de)}>{x.d}</p>}
+                {x.i.length > 0 && <ul>{x.i.map((y, k) => <li key={y} data-en={enText(x.ie?.[k])}>{y}</li>)}</ul>}
               </article>
             ))}
           </div>
@@ -106,7 +104,7 @@ function TreatmentDetail({ t }: { t: Treatment }) {
       {t.b.length > 0 && (
         <section className="dt-body bx-wrap">
           <Toc toc={toc} />
-          <article className="dt-art"><TrOnlyNote /><ArticleBody blocks={t.b} pre="dts-" /></article>
+          <article className="dt-art"><ArticleBody blocks={t.b} pre="dts-" /></article>
         </section>
       )}
 
@@ -135,18 +133,19 @@ function TreatmentDetail({ t }: { t: Treatment }) {
 
 function LocalDetail({ s }: { s: LocalService }) {
   const url = `${SITE}/tedaviler/${s.slug}`
+  const e = localEn(s.slug)
   return (
     <section className="pg bold dt" aria-labelledby="pgh-dt">
       <header className="dt-hero bx-wrap">
         <BackHome />
-        <nav className="dt-crumb" aria-label="Konum"><a href="/tedaviler" data-en="Treatments">Tedaviler</a><span>/</span><span>{s.name}</span></nav>
+        <nav className="dt-crumb" aria-label="Konum"><a href="/tedaviler" data-en="Treatments">Tedaviler</a><span>/</span><span data-en={enText(e?.name)}>{s.name}</span></nav>
         <div className="dt-eb"><b>LB</b><span>Lüleburgaz</span></div>
-        <h1 className="dt-h" id="pgh-dt">{s.h1}</h1>
+        <h1 className="dt-h" id="pgh-dt" data-en={enText(e?.h1)}>{s.h1}</h1>
         <div className="dt-hero-ft">
-          <p className="dt-lead">{s.lead}</p>
+          <p className="dt-lead" data-en={enText(e?.lead)}>{s.lead}</p>
           <aside className="dt-sum">
-            <div><span className="pg-lbl">Kimler için</span><ul>{s.forWho.map((w) => <li key={w}>{w}</li>)}</ul></div>
-            <Book label={`${s.name} için randevu →`} />
+            <div><span className="pg-lbl" data-en="Who it is for">Kimler için</span><ul>{s.forWho.map((w, i) => <li key={w} data-en={enText(e?.forWho[i])}>{w}</li>)}</ul></div>
+            <Book label={`${s.name} için randevu →`} en={e ? `Book: ${e.name} →` : undefined} />
           </aside>
         </div>
       </header>
@@ -154,49 +153,48 @@ function LocalDetail({ s }: { s: LocalService }) {
       <section className="dt-body bx-wrap">
         <div />
         <article className="dt-art">
-          <TrOnlyNote />
-          {s.intro.map((p, i) => <p key={i}>{p}</p>)}
+          {s.intro.map((p, i) => <p key={i} data-en={enText(e?.intro[i])}>{p}</p>)}
         </article>
       </section>
 
       <section className="dt-sec bx-wrap">
-        <h2 className="pg-lbl">{s.name} nasıl yapılır?</h2>
+        <h2 className="pg-lbl" data-en={e ? `How it is done: ${enText(e.name)}` : undefined}>{s.name} nasıl yapılır?</h2>
         <div className="dt-svc-g">
           {s.steps.map((st, j) => (
-            <article key={st.title}><i>{two(j)}</i><h3>{st.title}</h3><p>{st.text}</p></article>
+            <article key={st.title}><i>{two(j)}</i><h3 data-en={enText(e?.steps[j]?.title)}>{st.title}</h3><p data-en={enText(e?.steps[j]?.text)}>{st.text}</p></article>
           ))}
         </div>
       </section>
 
       <section className="dt-sec bx-wrap">
-        <h2 className="pg-lbl">Adres ve çalışma saatleri</h2>
+        <h2 className="pg-lbl" data-en="Address and opening hours">Adres ve çalışma saatleri</h2>
         <div className="contact">
           <div className="card cinfo">
-            <p>
+            <p data-en={`Our clinic is in Hazal Sokak, 8 Kasım Mahallesi, Lüleburgaz. We also see patients from nearby places such as ${NEARBY.slice(1).join(", ")}.`}>
               Kliniğimiz Lüleburgaz 8 Kasım Mahallesi, Hazal Sokak’tadır. {NEARBY.slice(1).join(", ")} gibi yakın
               yerleşimlerden de hasta kabul ediyoruz.
             </p>
             <address style={{ fontStyle: "normal" }}>
               {CLINIC.legalName}<br />{CLINIC.street}<br />{CLINIC.city}<br /><b className="num">{CLINIC.phone}</b>
             </address>
-            <div className="row"><a className="pbtn ghost" href={CLINIC.maps} target="_blank" rel="noopener">Yol tarifi ↗</a></div>
+            <div className="row"><a className="pbtn ghost" href={CLINIC.maps} target="_blank" rel="noopener" data-en="Directions ↗">Yol tarifi ↗</a></div>
           </div>
           <div className="card cinfo">
             <div>
-              <span className="pg-lbl">Çalışma saatleri</span>
+              <span className="pg-lbl" data-en="Opening hours">Çalışma saatleri</span>
               <ul className="hrs">{HOURS.map((h, i) => <li key={h.day} data-day={(i + 1) % 7}><span>{h.day}</span><span>{h.open}–{h.close}</span></li>)}</ul>
             </div>
           </div>
         </div>
       </section>
 
-      <Faq faq={s.faqs.map((f) => ({ q: f.question, a: f.answer }))} />
+      <Faq faq={s.faqs.map((f, i) => ({ q: f.question, a: f.answer, qe: e?.faqs[i]?.question, ae: e?.faqs[i]?.answer }))} />
 
       <section className="dt-sec bx-wrap">
-        <h2 className="pg-lbl">İlgili sayfalar</h2>
+        <h2 className="pg-lbl" data-en="Related pages">İlgili sayfalar</h2>
         <ol className="trx">
           {s.related.map((r, i) => (
-            <li key={r.href}><a href={r.href}><i>{two(i)}</i><b>{r.name}</b><span /></a></li>
+            <li key={r.href}><a href={r.href}><i>{two(i)}</i><b data-en={enText(e?.related[i])}>{r.name}</b><span /></a></li>
           ))}
         </ol>
       </section>

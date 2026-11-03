@@ -1,7 +1,7 @@
 import type { Metadata } from "next"
 import { BackHome, PageFooter } from "@/components/site/page-bits"
 import { CLINIC } from "@/lib/clinic"
-import { TX, two } from "@/lib/content"
+import { TX, two, enText, localEn } from "@/lib/content"
 import { LOCAL_SERVICES } from "@/lib/local-seo"
 
 export const metadata: Metadata = {
@@ -19,7 +19,6 @@ export default function TreatmentsPage() {
         <div className="pg-eb" data-en="03 · Treatments">03 · Tedaviler</div>
         <h1 className="pg-h" id="pgh-tedaviler" data-en="Areas of <em>treatment.</em>">Tedavi <em>alanları.</em></h1>
         <p className="pg-lead" data-en="Every treatment is planned after an examination and the imaging it needs. We talk through the right option for you at the appointment.">Her tedavi muayene ve gerekli görüntülemeyle planlanır. Size uygun seçeneği muayenede birlikte konuşuruz.</p>
-        <span className="pg-place" data-en="On the model: Under the palm">Maketteki yeri: Palmiyenin altı</span>
       </header>
       <ol className="trx">
         {TX.map((t, i) => (
@@ -40,11 +39,11 @@ export default function TreatmentsPage() {
         </div>
       </div>
       <div>
-        <span className="pg-lbl" data-en="Common treatments in Lüleburgaz (in Turkish)">Lüleburgaz’da sık aranan tedaviler</span>
+        <span className="pg-lbl" data-en="Common treatments in Lüleburgaz">Lüleburgaz’da sık aranan tedaviler</span>
         <ol className="trx">
           {LOCAL_SERVICES.map((s, i) => (
             <li key={s.slug}>
-              <a href={`/tedaviler/${s.slug}`}><i>{two(i)}</i><b>{s.name}</b><span>{s.lead}</span></a>
+              <a href={`/tedaviler/${s.slug}`}><i>{two(i)}</i><b data-en={enText(localEn(s.slug)?.name)}>{s.name}</b><span data-en={enText(localEn(s.slug)?.lead)}>{s.lead}</span></a>
             </li>
           ))}
         </ol>

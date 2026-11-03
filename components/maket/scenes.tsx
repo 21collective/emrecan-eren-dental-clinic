@@ -32,8 +32,6 @@ export function Scenes({ path }: { path: string }) {
       k.classList.toggle("sc-top", !isScene[i] && tone[i] !== tone[i - 1])
       k.classList.toggle("sc-end", !isScene[i] && tone[i] !== tone[i + 1] && !isFooter(k))
     })
-    const eb = kids[0]?.querySelector(".pg-eb, .dt-eb b")?.textContent?.match(/\d{2,3}/)
-    if (eb) kids[0].dataset.n = eb[0]
   }, [])
 
   useEffect(() => {

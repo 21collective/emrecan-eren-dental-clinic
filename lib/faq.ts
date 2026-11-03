@@ -58,3 +58,61 @@ export const CLINIC_FAQ: { question: string; answer: string }[] = [
     answer: "Evet. Büyükkarıştıran, Evrensekiz, Babaeski, Pınarhisar, Vize, Muratlı ve Hayrabolu gibi yakın yerleşimlerden gelen hastalarımız için de randevu planlıyoruz.",
   },
 ]
+
+const DAY_EN: Record<string, string> = {
+  Pazartesi: "Monday", Salı: "Tuesday", Çarşamba: "Wednesday", Perşembe: "Thursday", Cuma: "Friday", Cumartesi: "Saturday", Pazar: "Sunday",
+}
+const hoursLineEn = HOURS.map((h) => `${DAY_EN[h.day] || h.day} ${h.open}–${h.close}`).join(", ")
+
+// English for the visitor's language switch, same order as CLINIC_FAQ
+export const CLINIC_FAQ_EN: { question: string; answer: string }[] = [
+  {
+    question: "Where is Dr. Emrecan Eren's clinic in Lüleburgaz?",
+    answer: `Emrecan Eren Private Oral and Dental Health Polyclinic is at ${CLINIC.street}, ${CLINIC.city}. The clinic is a single-storey building with a garden.`,
+  },
+  { question: "What are the clinic's opening hours?", answer: `Our opening hours: ${hoursLineEn}.` },
+  {
+    question: "Is there a dentist open at the weekend in Lüleburgaz?",
+    answer: "Our clinic is open on Saturdays and Sundays from 11:00 to 17:00. We suggest messaging us on WhatsApp for an appointment time before you come.",
+  },
+  {
+    question: "Can I see a dentist in the evening?",
+    answer: "We see patients until 22:00 on Mondays and Wednesdays, and until 19:00 on Tuesdays, Thursdays and Fridays.",
+  },
+  {
+    question: "How do I make an appointment?",
+    answer: `Message us on WhatsApp or call ${CLINIC.phone}. Telling us briefly what the problem is helps us plan a suitable time.`,
+  },
+  {
+    question: "Can I come without an appointment if I have toothache?",
+    answer: "In an emergency, please message us on WhatsApp first; we try to find a suitable time that day. If you have rapidly growing facial swelling, difficulty breathing or swallowing, a high fever or bleeding that will not stop, go to the nearest hospital emergency department.",
+  },
+  {
+    question: "Which treatments does the clinic provide?",
+    answer: "Examinations and scaling, fillings, root canal treatment, extractions and impacted wisdom tooth surgery, implants, zirconia crowns and bridges, laminate veneers, tooth whitening, orthodontics with clear aligners, gum treatments, pediatric dentistry and bruxism treatment.",
+  },
+  {
+    question: "Is a microscope used for root canal treatment?",
+    answer: "Yes. Root canal treatments at our clinic are carried out under a dental microscope. The microscope magnifies and lights the working area, which helps to see extra canals and cracks.",
+  },
+  {
+    question: "Can a CT scan be taken at the clinic?",
+    answer: "Yes. The clinic has a dental CT (CBCT) unit; three-dimensional imaging can be taken for implant planning, impacted teeth and cases that need root canal treatment.",
+  },
+  {
+    question: "How many dentists work at the clinic?",
+    answer: "Four dentists see patients at our clinic: Dr. Emrecan Eren, Dr. Barkın Ergin, Dr. Mehmet Varyemez and Dr. Rıdvan Doğan.",
+  },
+  {
+    question: "Do you treat children?",
+    answer: "Yes. Treatment of baby teeth and preventive care such as fluoride application and fissure sealants are provided at our clinic.",
+  },
+  {
+    question: "Why can't I see treatment prices on the website?",
+    answer: "Under Turkey's regulation on promotion and information in health services, prices, discounts or campaigns may not appear in promotional media. Prices are shared after an examination, together with a treatment plan made for you.",
+  },
+  {
+    question: "Do you see patients from outside Lüleburgaz?",
+    answer: "Yes. We also plan appointments for patients from nearby places such as Büyükkarıştıran, Evrensekiz, Babaeski, Pınarhisar, Vize, Muratlı and Hayrabolu.",
+  },
+]

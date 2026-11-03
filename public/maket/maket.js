@@ -29,9 +29,10 @@ var EN={
  'perg.eb':'Garden corner','perg.h':'Tea in the shade of the straw?','perg.p':'Catch your breath before or after your appointment. Benches line the edges, corners included; tea and coffee are on us.',
  'palm.eb':'Palm','palm.h':'Treatments',
  'tr.0':'Implants','tr.1':'Microscope-assisted Root Canal','tr.2':'Laminate veneers','tr.3':'Zirconia crowns','tr.4':'Clear aligners (orthodontics)','tr.5':'Teeth whitening','tr.6':'Pediatric dentistry','tr.7':'Smile design',
+ 'p0.n':'Dr. Emrecan Eren','p1.n':'Dr. Barkın Ergin','p2.n':'Dr. Mehmet Varyemez','p3.n':'Dr. Rıdvan Doğan',
  'p0.t':'Founding Dentist','p0.d':'Founder of the clinic. At the microscope, never in a hurry.','p1.t':'Dentist','p1.d':'A dentist on our team.','p2.t':'Dentist','p2.d':'A dentist on our team.','p3.t':'Dentist','p3.d':'A dentist on our team.'
 };
-var HOTEN={gate:'Garden gate — knock to open',vest:'Clinic entrance',win:'Treatment room',sign:'Canopy & sign',roof:'Lift the roof — look inside',scooter:'Scooter — honk',palm:'Palm — treatments',pergola:'Seating corner'};
+var HOTEN={p0:'Dr. Emrecan Eren',p1:'Dr. Barkın Ergin',p2:'Dr. Mehmet Varyemez',p3:'Dr. Rıdvan Doğan',gate:'Garden gate — knock to open',vest:'Clinic entrance',win:'Treatment room',sign:'Canopy & sign',roof:'Lift the roof — look inside',scooter:'Scooter — honk',palm:'Palm — treatments',pergola:'Seating corner'};
 var DAYEN=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
 function hotLabel(h){if(LANG!=='en')return h.label;if(h.room)return h.room.en;return HOTEN[h.type||h.key]||HOTEN[h.key]||h.label;}
 function applyLang(){var en=LANG==='en';document.documentElement.lang=en?'en':'tr';
@@ -95,7 +96,7 @@ function sph(r,w,h){return new THREE.SphereGeometry(r,w||16,h||12);}
 function ico(r,d){return new THREE.IcosahedronGeometry(r,d||0);}
 function lathe(pts,seg){return new THREE.LatheGeometry(pts.map(function(p){return new THREE.Vector2(p[0],p[1]);}),seg||18);}
 var V3=function(x,y,z){return new THREE.Vector3(x,y,z);};
-var P={wash:0xf8f5ef,wash2:0xece6db,cream:0xebe2d3,brown:0x8b5e48,clay:0xc8643c,clayD:0xa94b26,terra:0xd27a4f,wood:0xa45f2c,woodD:0x6b4126,leaf:0x5f8a4a,leaf2:0x47703a,leafL:0x86ad62,grass:0x5f9d3f,ink:0x1c241e,black:0x22201e,skin:0xeab996,orange:0xea7a24,steel:0xb9bec2,earth:0xc0916a,earthD:0x9a6e4c};
+var P={wash:0xece6dc,wash2:0xe3dbce,cream:0xebe2d3,brown:0x8b5e48,clay:0xc8643c,clayD:0xa94b26,terra:0xd27a4f,wood:0xa45f2c,woodD:0x6b4126,leaf:0x5f8a4a,leaf2:0x47703a,leafL:0x86ad62,grass:0x5f9d3f,ink:0x1c241e,black:0x22201e,skin:0xeab996,orange:0xea7a24,steel:0xb9bec2,earth:0xc0916a,earthD:0x9a6e4c};
 var wallM=M(P.wash),blackM=M(P.black);
 var lampM=B(0x9b9283);  /* shared glow for every lantern */
 var uplightM=B(0x6e8f5a);
@@ -506,7 +507,7 @@ var IH=2.15,IT=0.08;
 var terrTex=ctex(256,256,function(x,w,h){x.fillStyle='#eee6d8';x.fillRect(0,0,w,h);for(var i=0;i<1800;i++){x.fillStyle='hsla('+rnd(25,40)+','+rnd(10,30)+'%,'+rnd(55,80)+'%,.55)';x.fillRect(rnd(0,w),rnd(0,h),1.6,1.6);}x.strokeStyle='rgba(150,130,100,.25)';x.lineWidth=1;for(var g=0;g<=w;g+=64){x.beginPath();x.moveTo(g,0);x.lineTo(g,h);x.moveTo(0,g);x.lineTo(w,g);x.stroke();}},true);
 terrTex.repeat.set(0.6,0.6);
 var floorM=new THREE.MeshToonMaterial({color:0xffffff,gradientMap:grad,map:terrTex});
-var iWallM=M(0xf7f3ec),woodDoorM=M(0xc98a5a),sageM=M(0x9c9b78),wickerM=M(0xb98a52),deskStoneM=M(0xdcd8cf),whiteM=M(0xfbfbf8),dkM=M(0x262422);
+var iWallM=M(0xf7f3ec),woodDoorM=M(0xc98a5a),sageM=M(0x9c9b78),wickerM=M(0xb98a52),deskStoneM=M(0xdcd8cf),whiteM=M(0xefebe4),dkM=M(0x262422);
 var partM=new THREE.MeshBasicMaterial({color:0xcfe6e4,transparent:true,opacity:0.3,depthWrite:false,side:THREE.DoubleSide});
 function mrect(r){var xa=PX(r[1]),xb=PX(r[3]),za=PZ(r[2]),zb=PZ(r[0]);return {x0:Math.min(xa,xb),x1:Math.max(xa,xb),z0:Math.min(za,zb),z1:Math.max(za,zb)};}
 function slab(parent,x0,x1,z0,z1,y,t,mat){return add(parent,box(x1-x0,t,z1-z0),mat,(x0+x1)/2,y,(z0+z1)/2,{noCast:true});}
@@ -587,8 +588,8 @@ var ROOMS=[
  {k:'k4',n:'Klinik 4 · Athena',r:[810,405,930,550],img:'k4',d:'Kliniğin en sakin köşesindeki tedavi odası.'},
  {k:'mudur',n:'Mesul Müdür Odası',r:[840,270,930,405],img:null,d:'Evraklar, onaylar ve kliniğin düzeni bu odada.'},
  {k:'bekle',n:'Bekleme Salonu',r:[670,268,840,400],img:'bekle',d:'Randevu öncesinde hastalarımızın ve yakınlarının ağırlandığı bekleme alanı. Kayıt ve bilgilendirme işlemleri danışma ekibimiz tarafından burada tamamlanır.'},
- {k:'wc',n:'WC · Engelli · Kadın · Erkek',r:[740,175,930,215],img:'wc',d:'Ahşap kapılı koridorun iki yanında engelli, kadın ve erkek tuvaletleri.'},
- {k:'kahve',n:'Kahve Köşesi · Merdiven',r:[580,118,740,262],img:'kahve',d:'Monsteraların arkasında kahve köşesi; yanında alt kata inen merdiven.'}
+ {k:'wc',n:'WC · Engelli · Kadın · Erkek',r:[740,175,930,215],img:'wc-2',d:'Ahşap kapılı koridorun iki yanında engelli, kadın ve erkek tuvaletleri.'},
+ {k:'kahve',n:'Kahve Köşesi · Merdiven',r:[580,118,740,262],img:'kahve-2',d:'Monsteraların arkasında kahve köşesi; yanında alt kata inen merdiven.'}
 ];
 var ROOMEN={k1:['Clinic 1 · Zeus','Microscope room: root canal treatment seen at up to 25× magnification. The digital intraoral scanner is here too; the big window looks onto the garden.'],
  k2:['Clinic 2 · Apollo','A calm treatment room with a wicker chair, in front of the glass facing the garden.'],
@@ -712,6 +713,21 @@ function rebuildProps(){
 var cloudM=F(0xffffff),clouds=new THREE.Group();scene.add(clouds);
 for(var ci=0;ci<16;ci++){var cg=new THREE.Group(),ca=4.09+(ci/15-0.5)*2.6+((ci*37)%10-5)*0.02,cr=22+((ci*7)%6)*3.4;cg.position.set(Math.cos(ca)*cr,3.5+((ci*5)%5)*1.7,Math.sin(ca)*cr);cg.scale.setScalar(0.8+((ci*3)%5)*0.15);cg.rotation.y=ci*1.3;var cn=3+(ci%3);for(var ck=0;ck<cn;ck++){var cm=add(cg,ico(0.8+((ck*7+ci)%5)*0.16,1),cloudM,ck*1.0-cn*0.5,(ck%2)*0.3,((ck*3)%3-1)*0.3,{noCast:true});cm.scale.y=0.7;}clouds.add(cg);}
 
+/* ---------- birds: two small flocks circling above the garden by day ---------- */
+var birds=new THREE.Group();scene.add(birds);
+(function(){var wg=new THREE.BufferGeometry();wg.setAttribute('position',new THREE.Float32BufferAttribute([0,0,0.11, 0,0,-0.11, 0.5,0.03,-0.07],3));wg.computeVertexNormals();
+  var bm=new THREE.MeshBasicMaterial({color:0x3a2c25,side:THREE.DoubleSide}),bodyG=new THREE.BoxGeometry(0.07,0.05,0.26);
+  for(var i=0;i<8;i++){var b=new THREE.Group(),L=new THREE.Mesh(wg,bm),R=new THREE.Mesh(wg,bm);R.scale.x=-1;b.add(new THREE.Mesh(bodyG,bm));b.add(L);b.add(R);
+    var fl=i>4?1:0;b.userData={L:L,R:R,a:(fl?i-5:i)*0.22,r:(fl?15:12)+((i*7)%3)*0.7,h:(fl?9.5:8)+((i*5)%4)*0.45,s:fl?0.085:0.1,ph:i*1.7,dir:fl?-1:1};
+    b.scale.setScalar(0.85+((i*3)%4)*0.1);birds.add(b);}})();
+function birdsTick(){var vis=nightT<0.55;birds.visible=vis;if(!vis)return;
+  birds.children.forEach(function(b){var u=b.userData,a=u.a+(RM?0:T*u.s)*u.dir;
+    b.position.set(Math.cos(a)*u.r,u.h+(RM?0:Math.sin(T*0.7+u.ph)*0.35),Math.sin(a)*u.r);
+    b.rotation.y=Math.atan2(-Math.sin(a)*u.dir,Math.cos(a)*u.dir);
+    // flap in bursts, glide in between
+    var glide=0.5+0.5*Math.sin(T*0.5+u.ph),f=RM?0.15:Math.sin(T*10+u.ph)*(glide>0.35?0.6:0.12);
+    u.L.rotation.z=f;u.R.rotation.z=-f;});}
+
 /* ---------- lights ---------- */
 var hemi=new THREE.HemisphereLight(0xeaf2ff,0xd9b38f,0.78);scene.add(hemi);
 var sun=new THREE.DirectionalLight(0xfff0d6,0.95);sun.castShadow=true;sun.shadow.mapSize.set(MOBILE?1024:2048,MOBILE?1024:2048);
@@ -775,7 +791,7 @@ var panel=$('#panel'),pbody=$('#pbody'),cur=null,pw=0,ph=0,gateTarget=0,gateT=0;
 function statusHTML(){var t=ist(),o=openNow(t);return '<span class="st '+(o?'on':'off')+'"><i></i>'+(o?L('Şu an açık · kapanış ','Open now · closes ')+fmt(HOURS[t.d][1]):L('Şu an kapalı · ','Closed now · ')+nextOpen(t))+'</span>';}
 function hoursHTML(){var t=ist();return '<ul class="hrs">'+[1,2,3,4,5,6,0].map(function(d){return '<li class="'+(d===t.d?'today':'')+'"><span>'+(LANG==='en'?DAYEN[d]:DAYL[d])+'</span><span>'+fmt(HOURS[d][0])+'–'+fmt(HOURS[d][1])+'</span></li>';}).join('')+'</ul>';}
 function html(g){var h=g.userData.hot,key=h.key,type=h.type||key;
-  if(key==='gate')return E('gate.eb','01 · Bahçe kapısı','div','eb')+E('gate.h','Kapımız açık.','h3')+statusHTML()+E('gate.p','Hazal Sokak köşesindeki ahşap kapıdan girin; palmiyenin yanından kıvrılan yol sizi kliniğin kapısına götürür.','p')+hoursHTML()+'<a class="btn" href="'+WAT+'" target="_blank" rel="noopener">'+L('Randevu yaz →','Write for an appointment →')+'</a>';
+  if(key==='gate')return E('gate.eb','01 · Bahçe kapısı','div','eb')+E('gate.h','Kapımız açık.','h3')+statusHTML()+E('gate.p','Hazal Sokak köşesindeki ahşap kapıdan girin; palmiyenin yanından kıvrılan yol sizi kliniğin kapısına götürür.','p')+hoursHTML()+'<a class="btn" href="'+WAT+'" target="_blank" rel="noopener">'+L('Randevu yaz →','Message us to book →')+'</a>';
   if(key==='vest')return E('vest.eb','02 · Klinik girişi','div','eb')+'<img class="thumb" src="/maket/img/salon.webp" alt="Bekleme salonu" onerror="this.style.display=\'none\'">'+E('vest.h2','Çalışma saatleri','h3')+statusHTML()+hoursHTML()+'<a class="btn" href="'+WAT+'" target="_blank" rel="noopener">Randevu al →</a>';
   if(key==='win')return E('win.eb','03 · Tedavi odası','div','eb')+E('win.h','Mikroskop odası · 25×','h3')+'<img class="thumb" src="/maket/img/tedavi.webp" alt="Mikroskoplu tedavi odası" onerror="this.style.display=\'none\'">'+E('win.p','Mikroskopla kanal tedavisi: dişin içini 25 kata varan büyütmeyle görüyoruz. Gizli kanallar, mikro çatlaklar, eski dolgu altları; tahmin yerine görerek.','p');
   if(key==='sign')return E('sign.eb','03 · Tabela','div','eb')+E('sign.h','Emrecan Eren Özel Ağız ve Diş Sağlığı Polikliniği','h3')+E('sign.p','8 Kasım Mah. Hazal Sk. No:44/A, Lüleburgaz / Kırklareli','p')+'<p class="sel">+90 543 486 00 55</p><p style="font-family:var(--mono);font-size:12px">Instagram · @emrecanerenadsp</p><a class="btn" href="'+WAT+'" target="_blank" rel="noopener">WhatsApp →</a>';
@@ -783,7 +799,7 @@ function html(g){var h=g.userData.hot,key=h.key,type=h.type||key;
   if(h.room){var R=h.room,rk='rm.'+R.k;return E(rk+'.eb','İçeride','div','eb')+E(rk+'.h',R.n,'h3')+(R.img?'<img class="thumb" src="/maket/img/'+R.img+'.webp" alt="'+esc(R.n)+'" onerror="this.style.display=\'none\'">':'')+E(rk+'.p',R.d,'p')+'<a class="btn" href="'+WAT+'" target="_blank" rel="noopener">'+L('Randevu al →','Book an appointment →')+'</a>';}
   if(type==='pergola')return E('perg.eb','Bahçe köşesi','div','eb')+E('perg.h','Hasırın gölgesinde bir çay?','h3')+E('perg.p','Randevudan önce ya da sonra soluklanın. Sedirler kenar boyunca, köşeler dahil; çay ve kahve bizden.','p')+'<a class="btn" href="'+WAT+'" target="_blank" rel="noopener">'+L('Randevu al →','Book an appointment →')+'</a>';
   if(type==='palm')return E('palm.eb','Palmiye','div','eb')+E('palm.h','Tedaviler','h3')+'<ul class="tlist">'+TREAT.map(function(x,i){return '<li><b>'+String(i+1).padStart(2,'0')+'</b>'+E('tr.'+i,x)+'</li>';}).join('')+'</ul><a class="btn" href="'+WAT+'" target="_blank" rel="noopener">'+L('Sorunuzu yazın →','Ask us anything →')+'</a>';
-  var pi=TYPES[type]&&TYPES[type].person;if(pi!==undefined){var m=TEAM[pi];return '<div class="who"><div class="ph"><img src="'+m.img+'" alt="'+esc(m.n)+'" onerror="this.style.display=\'none\'"></div><div>'+E('p'+pi+'.t',m.t,'div','eb')+E('p'+pi+'.n',m.n,'h3')+'</div></div>'+E('p'+pi+'.d',m.d,'p');}
+  var pi=TYPES[type]&&TYPES[type].person;if(pi!==undefined){var m=TEAM[pi];return '<div class="who"><div class="ph"><img src="'+m.img+'" alt="'+esc(m.n)+'" onerror="this.style.display=\'none\'"></div><div>'+E('p'+pi+'.t',m.t,'div','eb')+E('p'+pi+'.n',m.n,'h3')+'</div></div>';}
   return '';}
 function measure(){pw=panel.offsetWidth;ph=panel.offsetHeight;}
 function openPanel(g){cur=g;pbody.innerHTML=html(g);panel.classList.add('on');panel.setAttribute('aria-hidden','false');
@@ -1073,6 +1089,7 @@ function frame(now){
   camera.position.set(tgt.x+r*Math.cos(pitch)*Math.sin(yaw),tgt.y+r*Math.sin(pitch),tgt.z+r*Math.cos(pitch)*Math.cos(yaw));camera.lookAt(tgt);
   D.position.y=(RM||editing)?0:Math.sin(T*0.6)*0.08;
   clouds.rotation.y=RM?0:Math.sin(T*0.05)*0.12;
+  birdsTick();
   for(var i=tweens.length-1;i>=0;i--){var tw=tweens[i];tw.t+=dt;var p=Math.min(1,tw.t/tw.d);tw.fn(p);if(p>=1)tweens.splice(i,1);}
   // hover
   if(needRay&&isMouse&&!dragging&&!dragItem){hover=editing?pickProp():pick();needRay=false;}
@@ -1093,8 +1110,8 @@ function frame(now){
   doorL.rotation.y=gateT*1.6;doorR.rotation.y=-gateT*1.6;
   // day/night
   nightT+=(nightTarget-nightT)*(1-Math.pow(RM?0.0001:0.25,dt));var n=nightT;
-  hemi.color.copy(C.hd).lerp(C.hn,n);hemi.groundColor.copy(C.gd).lerp(C.gn,n);hemi.intensity=0.52-0.12*n;
-  sun.color.copy(C.sd).lerp(C.sn,n);sun.intensity=0.72-0.42*n;sun.position.lerpVectors(SUND,SUNN,n);
+  hemi.color.copy(C.hd).lerp(C.hn,n);hemi.groundColor.copy(C.gd).lerp(C.gn,n);hemi.intensity=0.46-0.06*n;
+  sun.color.copy(C.sd).lerp(C.sn,n);sun.intensity=0.63-0.33*n;sun.position.lerpVectors(SUND,SUNN,n);
   lampM.color.copy(C.off).lerp(C.on,n);uplightM.color.copy(C.upD).lerp(C.upN,n);
   clinicGlassM.color.copy(C.cgD).lerp(C.cgN,n);frostM.color.copy(C.fD).lerp(C.fN,n);dietM.color.copy(C.dD).lerp(C.dN,n);vGlassM.color.copy(C.vD).lerp(C.vN,n);upWinOn.color.copy(C.uwD).lerp(C.uwN,n);
   cloudM.color.copy(C.cw).lerp(C.cn,n);cloudM.emissive.setRGB(0.3*n,0.32*n,0.46*n);

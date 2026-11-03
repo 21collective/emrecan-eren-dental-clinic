@@ -2,9 +2,9 @@ import type { Metadata } from "next"
 import { notFound } from "next/navigation"
 import { JsonLd, schemas } from "@/components/seo/json-ld"
 import { SchemaMarkup } from "@/components/seo/schema-markup"
-import { ArticleBody, BackHome, Faq, GuideCard, PageFooter, Toc, TrOnlyNote, tocOf } from "@/components/site/page-bits"
+import { ArticleBody, BackHome, Faq, GuideCard, PageFooter, Toc, tocOf } from "@/components/site/page-bits"
 import { OG_IMAGE, SITE_UPDATED } from "@/lib/clinic"
-import { GD, gdBySlug, readMin, txBySlug } from "@/lib/content"
+import { GD, enText, gdBySlug, readMin, txBySlug } from "@/lib/content"
 
 const SITE = "https://www.emrecaneren.com"
 
@@ -45,14 +45,14 @@ export default async function GuideArticle({ params }: { params: Promise<{ slug:
     <section className="pg bold dt" aria-labelledby="pgh-gd">
       <header className="dt-hero bx-wrap">
         <BackHome />
-        <nav className="dt-crumb" aria-label="Konum"><a href="/dis-sagligi-rehberi" data-en="Guide">Rehber</a><span>/</span><span>{g.cat}</span></nav>
-        <h1 className="dt-h" id="pgh-gd" style={{ fontSize: "clamp(40px,6vw,104px)", maxWidth: "20ch" }}>{g.title}</h1>
+        <nav className="dt-crumb" aria-label="Konum"><a href="/dis-sagligi-rehberi" data-en="Guide">Rehber</a><span>/</span><span data-en={enText(g.catEn)}>{g.cat}</span></nav>
+        <h1 className="dt-h" id="pgh-gd" style={{ fontSize: "clamp(40px,6vw,104px)", maxWidth: "20ch" }} data-en={enText(g.titleEn)}>{g.title}</h1>
         <div className="dt-hero-ft">
-          <p className="dt-lead">{g.lead}</p>
+          <p className="dt-lead" data-en={enText(g.leadEn)}>{g.lead}</p>
           <div className="gd-meta">
             <span data-en="Dr. Emrecan Eren">Dt. Emrecan Eren</span>
             <span data-en={`${readMin(g)} min read`}>{readMin(g)} dk okuma</span>
-            <span>{g.cat}</span>
+            <span data-en={enText(g.catEn)}>{g.cat}</span>
             <span data-en={`Updated <time datetime="${modified}">${fmtDate(modified, "en-GB")}</time>`}>Güncelleme: <time dateTime={modified}>{fmtDate(modified, "tr-TR")}</time></span>
           </div>
         </div>
@@ -60,7 +60,7 @@ export default async function GuideArticle({ params }: { params: Promise<{ slug:
 
       <section className="dt-body bx-wrap gd">
         <Toc toc={tocOf(g.b, "gds-")} />
-        <article className="dt-art"><TrOnlyNote /><ArticleBody blocks={g.b} pre="gds-" /></article>
+        <article className="dt-art"><ArticleBody blocks={g.b} pre="gds-" /></article>
       </section>
 
       <Faq faq={g.faq} />

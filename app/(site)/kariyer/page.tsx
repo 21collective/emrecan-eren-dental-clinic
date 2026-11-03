@@ -22,6 +22,7 @@ const JOBS = [
     text: "Kliniğin fotoğraf, video ve Instagram üretimini yürütür.",
     textEn: "Runs the clinic’s photo, video and Instagram production.",
     items: ["Klinik ve ekip fotoğrafı", "Reels, vlog ve hekimin anlattığı eğitim videoları", "İçerik planı, tasarım ve hesap yönetimi", "Sağlık tanıtım kurallarına uygun içerik"],
+    itemsEn: ["Clinic and team photography", "Reels, vlogs and educational videos explained by the dentist", "Content planning, design and account management", "Content that follows health advertising rules"],
   },
   {
     title: "Diş Protez Teknisyeni",
@@ -31,6 +32,7 @@ const JOBS = [
     text: "Klinik içi laboratuvarda sabit ve hareketli protez üretimi.",
     textEn: "Fixed and removable prosthetics in the in-clinic lab.",
     items: ["Zirkonyum, cam seramik ve metal destekli porselen", "Dijital tasarım yazılımlarıyla çalışma", "Ağız içi tarayıcı verisiyle çalışma", "Hasta başında renk alma"],
+    itemsEn: ["Zirconia, glass ceramic and porcelain fused to metal", "Working with digital design software", "Working with intraoral scanner data", "Chairside shade matching"],
   },
 ]
 
@@ -50,7 +52,6 @@ export default function CareerPage() {
         <p className="pg-lead" data-en="We are hiring for two positions. Applications, with your CV, go through our application form (in Turkish).">
           İki pozisyon için başvuru alıyoruz. Başvurular, özgeçmiş yükleyebileceğiniz başvuru formumuz üzerinden alınır.
         </p>
-        <span className="pg-place" data-en="On the model: Treatment room">Maketteki yeri: Tedavi odası</span>
       </header>
       <section className="jobs-sc" aria-label="Açık pozisyonlar" data-en-label="Open positions">
         <div className="jobs-hd"><span className="pg-lbl" data-en="Open positions">Açık pozisyonlar</span><b>{two(JOBS.length - 1)}</b></div>
@@ -60,7 +61,7 @@ export default function CareerPage() {
               <div className="job-top"><i>{two(i)}</i><small data-en={j.typeEn}>{j.type}</small></div>
               <h2 data-en={j.titleEn}>{j.title}</h2>
               <p data-en={j.textEn}>{j.text}</p>
-              <ul>{j.items.map((x) => <li key={x}>{x}</li>)}</ul>
+              <ul>{j.items.map((x, k) => <li key={x} data-en={j.itemsEn[k]}>{x}</li>)}</ul>
               <a className="pbtn" href={APPLY_URL} target="_blank" rel="noopener" data-en="Apply →">Başvur →</a>
             </article>
           ))}

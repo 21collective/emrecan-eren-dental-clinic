@@ -23,7 +23,6 @@ export default function ContactPage() {
         <div className="pg-eb" data-en="06 · Contact">06 · İletişim</div>
         <h1 className="pg-h" id="pgh-iletisim" data-en="Hazal Street, <em>44/A.</em>">Hazal Sokak, <em>44/A.</em></h1>
         <p className="pg-lead" data-en="8 Kasım District, Lüleburgaz / Kırklareli. Open weekdays and weekends by appointment.">8 Kasım Mahallesi, Lüleburgaz / Kırklareli. Hafta içi ve hafta sonu randevuyla.</p>
-        <span className="pg-place" data-en="On the model: Entrance">Maketteki yeri: Giriş</span>
       </header>
       <div className="contact">
         <div className="card livemap">
